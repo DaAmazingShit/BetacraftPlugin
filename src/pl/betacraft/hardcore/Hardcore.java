@@ -21,7 +21,17 @@ public class Hardcore {
 			public void run() {
 				if (!Hdb.getAllSponges().isEmpty()) {
 					for (SpongeBlock sb: Hdb.getAllSponges()) {
-						sb.generateStone();
+						boolean matches = false;
+						for (String world: Hdb.getHardcoreWorlds()) {
+							if (!matches) {
+								if (sb.getSpongeBlock().getWorld().getName().equals(world)) {
+									matches = true;
+								}
+							}
+						}
+						if (matches) {
+							sb.generateStone();
+						}
 					}
 				}
 				if (!Hdb.getBannedPlayers().isEmpty()) {
