@@ -23,12 +23,6 @@ public class LBPlayer extends PlayerListener {
 			return;
 		}
 		String p = e.getPlayer().getName();
-		//String mat = e.getClickedBlock().getType().name();
-		//String hand = e.getPlayer().getInventory().getItemInHand().getType().name();
-		
-		//if (e.getAction() == Action.LEFT_CLICK_BLOCK && (e.getClickedBlock().getType() == Material.LEVER || e.getClickedBlock().getType() == Material.STONE_BUTTON)) {
-			//DBLogger.write(e.getClickedBlock().getLocation(), p + " uzyl " + mat);
-		//}
 		if (e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getPlayer().getItemInHand().getType() == Material.LEATHER && Permissions.Security.has(e.getPlayer(), "logblock.check")) {
 			if (clicked.get(p) != null) {
 				clicked.remove(p);
@@ -44,15 +38,6 @@ public class LBPlayer extends PlayerListener {
 				e.getPlayer().sendMessage(ChatColor.GRAY + h);
 			}
 		}
-		if (e.getAction() == Action.RIGHT_CLICK_BLOCK && (e.getClickedBlock().getType() == Material.LEVER || e.getClickedBlock().getType() == Material.STONE_BUTTON)) {
-			//DBLogger.write(e.getClickedBlock().getLocation(), p + " uzyl " + mat);
-		}
-		if ((e.getAction() == Action.RIGHT_CLICK_BLOCK) && (e.getPlayer().getInventory().getItemInHand().getType() == Material.BREAD || e.getPlayer().getInventory().getItemInHand().getType() == Material.APPLE || e.getPlayer().getInventory().getItemInHand().getType() == Material.GOLDEN_APPLE || e.getPlayer().getInventory().getItemInHand().getType() == Material.COOKED_FISH || e.getPlayer().getInventory().getItemInHand().getType() == Material.RAW_FISH || e.getPlayer().getInventory().getItemInHand().getType() == Material.PORK || e.getPlayer().getInventory().getItemInHand().getType() == Material.GRILLED_PORK || e.getPlayer().getInventory().getItemInHand().getType() == Material.MUSHROOM_SOUP)) {
-			//DBLogger.write(e.getClickedBlock().getLocation(), p + " zjadl " + hand);
-		}
-		if ((e.getAction() == Action.RIGHT_CLICK_AIR) && (e.getPlayer().getInventory().getItemInHand().getType() == Material.BREAD || e.getPlayer().getInventory().getItemInHand().getType() == Material.APPLE || e.getPlayer().getInventory().getItemInHand().getType() == Material.GOLDEN_APPLE || e.getPlayer().getInventory().getItemInHand().getType() == Material.COOKED_FISH || e.getPlayer().getInventory().getItemInHand().getType() == Material.RAW_FISH || e.getPlayer().getInventory().getItemInHand().getType() == Material.PORK || e.getPlayer().getInventory().getItemInHand().getType() == Material.GRILLED_PORK || e.getPlayer().getInventory().getItemInHand().getType() == Material.MUSHROOM_SOUP)) {
-			//DBLogger.write(e.getClickedBlock().getLocation(), p + " zjadl " + hand);
-		}
 		if (e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getClickedBlock().getType() == Material.SOIL && e.getPlayer().getInventory().getItemInHand().getType() == Material.SEEDS) {
 			DBLogger.write(e.getClickedBlock().getLocation(), p, "AIR", "SEEDS");
 		}
@@ -63,18 +48,6 @@ public class LBPlayer extends PlayerListener {
         	DBLogger.write(e.getClickedBlock().getLocation(), p, "CAKE_BLOCK", "CAKE_BLOCK");
         }
 	}
-	
-	/*@Override
-	public void onPlayerInteractEntity(PlayerInteractEntityEvent e) {
-		String p = e.getPlayer().getName();
-		String entity = e.getRightClicked().toString();
-		String x = Integer.toString(e.getRightClicked().getLocation().getBlockX());
-		String y = Integer.toString(e.getRightClicked().getLocation().getBlockY());
-		String z = Integer.toString(e.getRightClicked().getLocation().getBlockZ());
-		String id = Integer.toString(e.getRightClicked().getEntityId());
-		String w = e.getRightClicked().getLocation().getWorld().getName();
-		Logging.log("Gracz " + p + " kliknal na entity " + entity + ", IDEntity: "+id+", koordy entity: X"+x+", Y"+y+", Z"+z+" Swiat - "+w+".");
-	}*/
 	
 	@Override
 	public void onPlayerCommandPreprocess(PlayerCommandPreprocessEvent e) {

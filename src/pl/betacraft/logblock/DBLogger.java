@@ -21,23 +21,6 @@ public class DBLogger {
 		database.setProperty(date + ".cobylo", co);
 		database.setProperty(date + ".cojest", efekt);
 		database.save();
-/*		database.load();
-		List<String> block = new LinkedList<String>();
-		if (database.getStringList(toString(l), null) != null) {
-			block.addAll(database.getStringList(toString(l), null));
-		}
-		block.add(tresc);
-		String filePath = "plugins/LogBlock/quick_database.db";
-		try {
-			BufferedWriter out = new BufferedWriter(new FileWriter(filePath, true));
-		    out.write(toString(l) + ":" + block.toString());
-		    out.newLine();
-		    out.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		database.setProperty(toString(l), block);
-		database.save();*/
 	}
 
 	public static List<String> get(Location l) {

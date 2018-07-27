@@ -43,7 +43,6 @@ public class LBBlock extends BlockListener {
 			String y = Integer.toString(e.getBlock().getLocation().getBlockY());
 			String z = Integer.toString(e.getBlock().getLocation().getBlockZ());
 			String w = e.getBlock().getWorld().getName();
-			//DBLogger.write(e.getBlock().getLocation(), p + " postawil tu ogien");
 			Logging.log("Gracz " + p + " PODPALIL blok " + type + " na koordach: X"+x+", Y"+y+", Z"+z+", Swiat - "+w+".");
 		}
 	}
