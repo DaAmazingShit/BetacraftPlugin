@@ -1,0 +1,2 @@
+# BetacraftPlugin
+go out
