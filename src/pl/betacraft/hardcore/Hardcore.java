@@ -19,6 +19,11 @@ public class Hardcore {
 
 		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable() {
 			public void run() {
+				if (!Hdb.getAllSponges().isEmpty()) {
+					for (SpongeBlock sb: Hdb.getAllSponges()) {
+						sb.generateStone();
+					}
+				}
 				if (!Hdb.getBannedPlayers().isEmpty()) {
 					for (String ep: Hdb.getBannedPlayers()) {
 						String[] x = ep.split("_");
@@ -32,7 +37,7 @@ public class Hardcore {
 					}
 				}
 			}
-		}, 0L, 600L); // every 30s
+		}, 0L, 30L); // every 1,5s
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {

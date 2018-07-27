@@ -5,12 +5,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.util.config.Configuration;
 
 public class Hdb {
 
 	private static Configuration config = new Configuration(new File("plugins/BetaCraft/Hardcore", "bans.yml"));
+	private static Configuration sponges = new Configuration(new File("plugins/BetaCraft/Hardcore", "sponges.yml"));
 
 	public static List<String> getHardcoreWorlds() {
 		config.load();
@@ -92,5 +94,49 @@ public class Hdb {
 	public static int banDays() {
 		config.load();
 		return config.getInt("days", 7);
+	}
+
+	// Sponge
+
+	public static void addSponge(Block block) {
+		sponges.load();
+		sponges.setProperty("sponges." + spongeToString(block), "present");
+		sponges.save();
+	}
+
+	public static void removeSponge(Block block) {
+		sponges.load();
+		sponges.removeProperty("sponges." + spongeToString(block));
+		sponges.save();
+	}
+
+	public static boolean isSpongeRegistered(Block block) {
+		sponges.load();
+		if (sponges.getString("sponges." + spongeToString(block), null) == null) {
+			return false;
+		}
+		return true;
+	}
+
+	public static List<SpongeBlock> getAllSponges() {
+		sponges.load();
+		List<SpongeBlock> blocks = new LinkedList<SpongeBlock>();
+		if (sponges.getKeys("sponges").isEmpty()) {
+			return blocks;
+		}
+		for (String one: sponges.getKeys("sponges")) {
+			String[] args = one.split(",");
+			String world = args[0];
+			int x = Integer.parseInt(args[1]);
+			int y = Integer.parseInt(args[2]);
+			int z = Integer.parseInt(args[3]);
+			SpongeBlock s = SpongeBlock.getSpongeBlock(world, x, y, z);
+			blocks.add(s);
+		}
+		return blocks;
+	}
+
+	public static String spongeToString(Block block) {
+		return block.getWorld().getName() + "," + block.getX() + "," + block.getY() + "," + block.getZ();
 	}
 }
