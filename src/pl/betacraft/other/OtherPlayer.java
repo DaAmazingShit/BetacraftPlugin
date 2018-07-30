@@ -1,4 +1,4 @@
-package pl.betacraft.moresteck;
+package pl.betacraft.other;
 
 import java.io.File;
 
@@ -10,7 +10,7 @@ import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.util.config.Configuration;
 
-public class eventList extends PlayerListener {
+public class OtherPlayer extends PlayerListener {
 	private static Configuration config = new Configuration(new File("plugins/BetaCraft", "sound.yml"));
 
 	@Override
