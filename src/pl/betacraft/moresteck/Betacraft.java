@@ -3,6 +3,8 @@ package pl.betacraft.moresteck;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.Event.Priority;
+import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import pl.betacraft.dzialecznik.Dzialecznik;
@@ -20,6 +22,7 @@ public class Betacraft extends JavaPlugin {
 		Hardcore.onEnable(this);
 		Wayback.onEnable(this);
 		Bukkit.getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new eventList(), Priority.Highest, this);
 	}
 
 	public void onDisable() {
@@ -31,7 +34,7 @@ public class Betacraft extends JavaPlugin {
 		Dzialecznik.onCommand(sender, cmd, alias, args);
 		Hardcore.onCommand(sender, cmd, alias, args);
 		try {
-			Sprzedaj.onCommand(sender, cmd, alias, args);
+			//Sprzedaj.onCommand(sender, cmd, alias, args);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
