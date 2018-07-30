@@ -28,14 +28,14 @@ public class Items {
 			ItemStack cobblex = new ItemStack(Material.MOSSY_COBBLESTONE, 1);
 			if (pi.contains(Material.COBBLESTONE, 576)) {
 				for (int x = 0; x < 9; x++) {
-					pi.remove(cobble);
+					pi.removeItem(cobble);
 				}
 				pi.addItem(cobblex);
 				p.sendMessage(ChatColor.GREEN + "Dostales cobblex!");
 				return true;
 			}
-				p.sendMessage(ChatColor.RED + "Nie masz wystarczajacej ilosci cobble'a. Potrzeba 9 stakow.");
-				return true;
+			p.sendMessage(ChatColor.RED + "Nie masz wystarczajacej ilosci cobble'a. Potrzeba 9 stakow.");
+			return true;
 		}
 		return false;
 	}
