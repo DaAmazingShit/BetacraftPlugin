@@ -1,7 +1,6 @@
 package pl.betacraft.hardcore;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -16,38 +15,6 @@ public class Hardcore {
 	public static void onEnable(JavaPlugin instance) {
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_RESPAWN, new HardcoreList(), Priority.Normal, instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_TELEPORT, new HardcoreList(), Priority.Normal, instance);
-
-		Bukkit.getServer().getScheduler().scheduleSyncRepeatingTask(instance, new Runnable() {
-			public void run() {
-				if (!Hdb.getAllSponges().isEmpty()) {
-					for (SpongeBlock sb: Hdb.getAllSponges()) {
-						boolean matches = false;
-						for (String world: Hdb.getHardcoreWorlds()) {
-							if (!matches) {
-								if (sb.getSpongeBlock().getWorld().getName().equals(world)) {
-									matches = true;
-								}
-							}
-						}
-						if (matches) {
-							sb.generateStone();
-						}
-					}
-				}
-				if (!Hdb.getBannedPlayers().isEmpty()) {
-					for (String ep: Hdb.getBannedPlayers()) {
-						String[] x = ep.split("_");
-						String now = HardcoreList.getNowDate();
-						if (x[1].equals(now)) {
-							Hdb.unban(x[0]);
-							if (Bukkit.getServer().getPlayer(x[0]) != null) {
-								Bukkit.getServer().getPlayer(x[0]).sendMessage(ChatColor.RED + "Mozesz znowu grac na hardcore.");
-							}
-						}
-					}
-				}
-			}
-		}, 0L, 30L); // every 1,5s
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {

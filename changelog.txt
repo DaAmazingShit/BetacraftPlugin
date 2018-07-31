@@ -1,4 +1,6 @@
 v1.3.6:
-- Merged MobLimit with BetaCraft
+- Merged MobLimit
+- Merged BetaCommandBlocks
+- Reduced server lag
 - Added CobbleX
 - Added StoneDrop
