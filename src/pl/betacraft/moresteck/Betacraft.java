@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pl.betacraft.dzialecznik.Dzialecznik;
 import pl.betacraft.hardcore.Hardcore;
 import pl.betacraft.logblock.LogBlock;
+import pl.betacraft.moblimit.MobLimit;
 import pl.betacraft.other.Other;
 import pl.betacraft.sell.Sprzedaj;
 import pl.betacraft.wayback.Wayback;
@@ -20,6 +21,7 @@ public class Betacraft extends JavaPlugin {
 		Sprzedaj.onEnable();
 		Hardcore.onEnable(this);
 		Wayback.onEnable(this);
+		MobLimit.onEnable(this);
 		Other.onEnable(this);
 		Bukkit.getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
 	}
