@@ -23,6 +23,8 @@ public class HardcoreBlock extends BlockListener {
 			return;
 		}
 		
+		//CobbleX
+		
 		if (e.getBlock().getType() == Material.STONE && e.getPlayer().getLocation().getBlockY() <= 20) {
 			
 			ItemStack diamond = new ItemStack(Material.DIAMOND);
