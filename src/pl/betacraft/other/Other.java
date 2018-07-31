@@ -19,8 +19,10 @@ public class Other {
 	public static List<String> players_cobblex = new LinkedList<String>();
 
 	public static void onEnable(JavaPlugin instance) {
-		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new OtherPlayer(), Priority.Normal, instance);
-		Bukkit.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, new OtherBlock(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new OtherPlayer(), Priority.Normal,
+				instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, new OtherBlock(), Priority.Normal,
+				instance);
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
@@ -28,7 +30,9 @@ public class Other {
 			if (!(sender instanceof Player)) {
 				// no support for console
 				return true;
+
 			}
+
 			Player p = (Player) sender;
 			PlayerInventory pi = p.getInventory();
 			ItemStack cobble = new ItemStack(Material.COBBLESTONE, 64);
@@ -46,5 +50,15 @@ public class Other {
 			return true;
 		}
 		return true;
+
+		if (cmd.getName().equalsIgnoreCase("itemy")) {
+			if (!(sender instanceof Player)) {
+				return true;
+			}
+
+			Player p = (Player) sender;
+			p.sendMessage(ChatColor.LIGHT_PURPLE + "64 diamentowych blokow\n64 zelaznych blokow\n64 zlotych jablek\n64 obsidianu\n64 wegla");
+
+		}
 	}
 }
