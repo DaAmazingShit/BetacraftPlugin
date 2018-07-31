@@ -2,6 +2,7 @@ package pl.betacraft.hardcore;
 
 import java.util.Random;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockListener;
@@ -40,21 +41,29 @@ public class HardcoreBlock extends BlockListener {
 		
 			if(n == 1) {
 				e.getPlayer().getInventory().addItem(diamond);
+				e.getPlayer().sendMessage(ChatColor.AQUA + "Dostales diament!");
 			}
 			
 			else if(n == 2) {
 				e.getPlayer().getInventory().addItem(gold);
+				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales zloto!");
 				e.getPlayer().getInventory().addItem(redstone);
+				e.getPlayer().sendMessage(ChatColor.RED + "Dostales redstone!");
 			}
 			
 			else if(n == 3) {
 				e.getPlayer().getInventory().addItem(iron);
+				e.getPlayer().sendMessage(ChatColor.GRAY + "Dostales zelazo!");
 				e.getPlayer().getInventory().addItem(tnt);
+				e.getPlayer().sendMessage(ChatColor.DARK_RED + "Dostales TNT!");
 				e.getPlayer().getInventory().addItem(obsidian);
+				e.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "Dostales obsidian!");
+				
 			}
 			
 			else if(n == 4) {
 				e.getPlayer().getInventory().addItem(coal);
+				e.getPlayer().sendMessage(ChatColor.BLACK + "Dostales wegiel!");
 			}
 			
 			else {
@@ -78,17 +87,23 @@ public class HardcoreBlock extends BlockListener {
 			
 			if(n == 1) {
 				e.getPlayer().getInventory().addItem(gold);
+				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales zloto!");
 				e.getPlayer().getInventory().addItem(redstone);
+				e.getPlayer().sendMessage(ChatColor.RED + "Dostales redstone!");
 			}
 			
 			else if(n == 2) {
 				e.getPlayer().getInventory().addItem(iron);
+				e.getPlayer().sendMessage(ChatColor.GRAY + "Dostales zelazo!");
 				e.getPlayer().getInventory().addItem(tnt);
+				e.getPlayer().sendMessage(ChatColor.DARK_RED + "Dostales TNT!");
 				e.getPlayer().getInventory().addItem(obsidian);
+				e.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "Dostales obsidian!");
 			}
 			
 			else if(n == 3) {
 				e.getPlayer().getInventory().addItem(coal);
+				e.getPlayer().sendMessage(ChatColor.BLACK + "Dostales wegiel!");
 			}
 			
 			else {
