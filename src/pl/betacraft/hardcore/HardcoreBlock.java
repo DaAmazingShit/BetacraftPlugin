@@ -2,12 +2,18 @@ package pl.betacraft.hardcore;
 
 import java.util.Random;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.material.Jukebox;
 
 public class HardcoreBlock extends BlockListener {
 
@@ -16,6 +22,26 @@ public class HardcoreBlock extends BlockListener {
 			return;
 		}
 		Hdb.addSponge(e.getBlock());
+		
+		//Moat Digger
+		
+		if(e.getBlockPlaced().getType() == Material.JUKEBOX) {
+            int x = e.getBlockPlaced().getLocation().getBlockX();
+            int y = e.getBlockPlaced().getLocation().getBlockY();
+            int z = e.getBlockPlaced().getLocation().getBlockZ();
+            World w = Bukkit.getWorld("hardcore");
+            Location loc = new Location(w, x, y, z);
+            loc.getBlock().setType(Material.AIR);
+            
+            for (int y1 = e.getBlockPlaced().getY(); y1 > 0; y1--) {
+                Block b = e.getBlockPlaced().getWorld().getBlockAt(e.getBlockPlaced().getX(), y1, e.getBlockPlaced().getZ());
+                if (b.getType() != Material.BEDROCK) {
+                    b.setType(Material.AIR);
+                }
+            }
+ 
+		}
+		
 	}
 
 	public void onBlockBreak(BlockBreakEvent e) {

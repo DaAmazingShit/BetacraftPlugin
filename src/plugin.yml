@@ -32,3 +32,5 @@ commands:
         usage: /cb
     setblock:
         usage: /setblock
+    itemy:
+        usage: /itemy
