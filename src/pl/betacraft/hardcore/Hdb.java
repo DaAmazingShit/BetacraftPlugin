@@ -121,7 +121,7 @@ public class Hdb {
 	public static List<SpongeBlock> getAllSponges() {
 		sponges.load();
 		List<SpongeBlock> blocks = new LinkedList<SpongeBlock>();
-		if (sponges.getKeys("sponges").isEmpty()) {
+		if (sponges.getKeys("sponges") == null || sponges.getKeys("sponges").isEmpty()) {
 			return blocks;
 		}
 		for (String one: sponges.getKeys("sponges")) {

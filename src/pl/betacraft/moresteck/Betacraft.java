@@ -37,6 +37,7 @@ public class Betacraft extends JavaPlugin {
 		Hardcore.onEnable(this);
 		Wayback.onEnable(this);
 		MobLimit.onEnable(this);
+		BetaCommandBlocks.onEnable(this);
 		Other.onEnable(this);
 		Bukkit.getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
 		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
@@ -139,6 +140,7 @@ public class Betacraft extends JavaPlugin {
 		LogBlock.onCommand(sender, cmd, alias, args);
 		Dzialecznik.onCommand(sender, cmd, alias, args);
 		Hardcore.onCommand(sender, cmd, alias, args);
+		BetaCommandBlocks.onCommand(sender, cmd, alias, args);
 		//Sprzedaj.onCommand(sender, cmd, alias, args);
 		return true;
 	}
