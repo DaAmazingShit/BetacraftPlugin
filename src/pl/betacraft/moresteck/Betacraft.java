@@ -17,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import pl.betacraft.betacommandblocks.BetaCommandBlocks;
+import pl.betacraft.chestprotection.ChestProtection;
 import pl.betacraft.dzialecznik.Dzialecznik;
 import pl.betacraft.hardcore.Hardcore;
 import pl.betacraft.hardcore.HardcoreList;
@@ -38,6 +39,7 @@ public class Betacraft extends JavaPlugin {
 		Wayback.onEnable(this);
 		MobLimit.onEnable(this);
 		BetaCommandBlocks.onEnable(this);
+		ChestProtection.onEnable(this);
 		Other.onEnable(this);
 		Bukkit.getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
 		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
@@ -141,6 +143,7 @@ public class Betacraft extends JavaPlugin {
 		Dzialecznik.onCommand(sender, cmd, alias, args);
 		Hardcore.onCommand(sender, cmd, alias, args);
 		Other.onCommand(sender, cmd, alias, args);
+		ChestProtection.onCommand(sender, cmd, alias, args);
 		BetaCommandBlocks.onCommand(sender, cmd, alias, args);
 		//Sprzedaj.onCommand(sender, cmd, alias, args);
 		return true;

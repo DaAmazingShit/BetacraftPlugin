@@ -1,6 +1,7 @@
 v1.3.6:
-- Merged MobLimit
-- Merged BetaCommandBlocks
+- Merged with MobLimit
+- Merged with BetaCommandBlocks
+- Merged with ChestProtection
 - Reduced server lag
 - Added CobbleX
 - Added StoneDrop
