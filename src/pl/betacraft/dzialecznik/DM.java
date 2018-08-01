@@ -1,7 +1,6 @@
 package pl.betacraft.dzialecznik;
 
 import java.io.File;
-import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -50,13 +49,5 @@ public class DM {
 		db.removeProperty(dzialkabazar + "." + p + "." + miasto);
 		db.save();
 		return true;
-	}
-
-	public static boolean isBanned(String region, String p) {
-		List<String> bans = Dzialecznik.opcje.getStringList("opcje." + region + ".ban", null);
-		if (bans.contains(p)) {
-			return true;
-		}
-		return false;
 	}
 }

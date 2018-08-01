@@ -12,18 +12,19 @@ import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
+import pl.betacraft.other.Other;
+
 public class HardcoreBlock extends BlockListener {
 
 	public void onBlockPlace(BlockPlaceEvent e) {
-		// SpongeBlock
 
+		// SpongeBlock
 		if (e.getBlock().getType() == Material.SPONGE) {
 			Hdb.addSponge(e.getBlock());
 			return;
 		}
 
 		// Moat Digger
-
 		if (e.getBlockPlaced().getType() == Material.JUKEBOX) {
 			int x = e.getBlockPlaced().getX();
 			int y = e.getBlockPlaced().getY();
@@ -57,8 +58,7 @@ public class HardcoreBlock extends BlockListener {
 			return;
 		}
 
-		// CobbleX
-
+		// StoneDrop
 		if (e.getBlock().getType() == Material.STONE && e.getPlayer().getLocation().getBlockY() <= 20) {
 
 			ItemStack diamond = new ItemStack(Material.DIAMOND);
@@ -139,6 +139,74 @@ public class HardcoreBlock extends BlockListener {
 
 			else {
 				return;
+			}
+		}
+
+		// CobbleX
+		if (e.getBlock().getType() == Material.MOSSY_COBBLESTONE) {
+			if (!Other.players_cobblex.contains(e.getPlayer().getName())) {
+				return;
+			}
+			boolean isHardcore = false;
+			for (String w : Hdb.getHardcoreWorlds()) {
+				if (w.equalsIgnoreCase(e.getBlock().getWorld().getName())) {
+					isHardcore = true;
+				}
+			}
+			if (!isHardcore) {
+				return;
+			}
+			ItemStack ironsword = new ItemStack(Material.IRON_SWORD);
+			ItemStack goldenapple = new ItemStack(Material.GOLDEN_APPLE);
+			ItemStack dirt = new ItemStack(Material.DIRT);
+			ItemStack jukebox = new ItemStack(Material.JUKEBOX);
+			ItemStack greenrecord = new ItemStack(Material.GREEN_RECORD);
+			ItemStack map = new ItemStack(Material.MAP);
+			ItemStack ironhelmet = new ItemStack(Material.IRON_HELMET);
+			ItemStack ironchestplate = new ItemStack(Material.IRON_CHESTPLATE);
+			ItemStack ironboots = new ItemStack(Material.IRON_BOOTS);
+			ItemStack ironleggins= new ItemStack(Material.IRON_LEGGINGS);
+			
+			Random rand = new Random();
+			int n = rand.nextInt(10) + 1;
+			if (n == 1) {
+				e.getPlayer().getInventory().addItem(ironsword);
+			}
+			
+			else if (n == 2) {
+				e.getPlayer().getInventory().addItem(goldenapple);
+			}
+			
+			else if (n == 3) {
+				e.getPlayer().getInventory().addItem(dirt);
+			}
+			
+			else if (n == 4) {
+				e.getPlayer().getInventory().addItem(jukebox);
+			}
+			
+			else if (n == 5) {
+				e.getPlayer().getInventory().addItem(greenrecord);
+			}
+			
+			else if (n == 6) {
+				e.getPlayer().getInventory().addItem(map);
+			}
+			
+			else if (n == 7) {
+				e.getPlayer().getInventory().addItem(ironhelmet);
+			}
+			
+			else if (n == 8) {
+				e.getPlayer().getInventory().addItem(ironchestplate);
+			}
+			
+			else if (n == 9) {
+				e.getPlayer().getInventory().addItem(ironboots);
+			}
+			
+			else if (n == 10) {
+				e.getPlayer().getInventory().addItem(ironleggins);
 			}
 		}
 	}

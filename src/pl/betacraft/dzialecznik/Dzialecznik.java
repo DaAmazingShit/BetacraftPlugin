@@ -5,7 +5,6 @@ import java.io.File;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -25,13 +24,6 @@ public class Dzialecznik {
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
 		if (sender instanceof Player) {
 			Player p = (Player)sender;
-			if (cmd.getName().equalsIgnoreCase("save")) {
-				for (World w : Bukkit.getServer().getWorlds()) {
-					w.save();
-					p.sendMessage(ChatColor.GREEN + "Zapisano swiat: " + ChatColor.RED + w.getName());
-				}
-				return true;
-			}
 			if (cmd.getName().equalsIgnoreCase("dzialka")) {
 				if (args.length == 0) {
 					if (DM.hasPlayer(p.getName(), "Kopytnik")) {
@@ -133,19 +125,6 @@ public class Dzialecznik {
 						p.sendMessage(ChatColor.RED + " [Dzialecznik] Gracz nie ma bazaru: " + args[0]);
 					}
 				}
-			}
-			if (cmd.getName().equalsIgnoreCase("seed")) {
-				p.sendMessage(ChatColor.GREEN + "Seed: " + ChatColor.YELLOW + p.getWorld().getSeed());
-				return true;
-			}
-		}
-		else {
-			if (cmd.getName().equalsIgnoreCase("save")) {
-				for (World w : Bukkit.getServer().getWorlds()) {
-					w.save();
-					sender.sendMessage(ChatColor.GREEN + "Zapisano swiat: " + ChatColor.RED + w.getName());
-				}
-				return true;
 			}
 		}
 		return true;

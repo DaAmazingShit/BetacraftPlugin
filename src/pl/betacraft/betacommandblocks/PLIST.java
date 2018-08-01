@@ -26,10 +26,8 @@ public class PLIST extends PlayerListener {
 		if (block.getType() != Material.LAPIS_BLOCK) {
 			return;
 		}
-		if (block.getData() != (byte)2) {
-			return;
-		}
 		if (e.getPlayer().isSneaking()) {
+			// Display command attached to this command block
 			if (BetaCommandBlocks.config.getProperty("commandblocks." + block.getWorld().getName() + "," + block.getX() + "," + block.getY() + "," + block.getZ()) != null) {
 				String komenda = BetaCommandBlocks.config.getString("commandblocks." + block.getWorld().getName() + "," + block.getX() + "," + block.getY() + "," + block.getZ(), "Cos nie tak z konfiguracja.");
 				e.getPlayer().sendMessage(ChatColor.AQUA + " Komenda tego bloku wykonawczego: " + ChatColor.YELLOW + "/" + komenda);
@@ -41,6 +39,7 @@ public class PLIST extends PlayerListener {
 		if (!Permissions.Security.has(e.getPlayer(), "commandblock.use")) {
 			return;
 		}
+		// Select command block
 		if (selected.get(e.getPlayer().getName()) != null) {
 			selected.remove(e.getPlayer().getName());
 		}

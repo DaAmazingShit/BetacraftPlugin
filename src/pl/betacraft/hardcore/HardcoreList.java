@@ -41,11 +41,17 @@ public class HardcoreList extends PlayerListener {
 		Player p = e.getPlayer();
 		Location before = p.getLocation();
 		if (Hdb.getHardcoreWorlds().contains(p.getWorld().getName())) {
+
+			// Respawning to default world (level-name in server.properties)
 			e.setRespawnLocation(Bukkit.getWorlds().get(0).getSpawnLocation());
+
 			p.sendMessage(ChatColor.RED + "Umarles w swiecie " + before.getWorld().getName());
 			p.sendMessage(ChatColor.RED + "Twój ban na hardcore potrwa do: " + getBanDate());
+
+			// This is needed to avoid respawn screen on joining after ban expires
 			((CraftPlayer)p).getHandle().dead = false;
 			p.setHealth(20);
+
 			Hdb.ban(p.getName(), getBanDate());
 		}
 	}

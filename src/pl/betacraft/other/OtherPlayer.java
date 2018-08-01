@@ -1,17 +1,13 @@
 package pl.betacraft.other;
 
-import java.io.File;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerListener;
-import org.bukkit.util.config.Configuration;
 
 public class OtherPlayer extends PlayerListener {
-	private static Configuration config = new Configuration(new File("plugins/BetaCraft", "sound.yml"));
 
 	@Override
 	public void onPlayerChat(PlayerChatEvent e) {
@@ -25,9 +21,7 @@ public class OtherPlayer extends PlayerListener {
 				}
 				else {
 					split[x] = ChatColor.BLUE + "@" + name;
-					config.load();
-					// nw jak chcesz to dokoncz
-					p.playEffect(p.getEyeLocation(), Effect.EXTINGUISH, 10);
+					p.playEffect(p.getEyeLocation(), Effect.SMOKE, 10);
 				}
 			}
 		}

@@ -16,18 +16,21 @@ public class WEntity extends EntityListener {
 		if (!(e.getEntity() instanceof Sheep)) {
 			return;
 		}
-		if (e.getCause() != DamageCause.ENTITY_ATTACK && e.getCause() != DamageCause.CONTACT) {
+		// If the cause of damaging the sheep is not an attack, contant or an projectile, leave this event alone
+		if (e.getCause() != DamageCause.ENTITY_ATTACK && e.getCause() != DamageCause.CONTACT && e.getCause() != DamageCause.PROJECTILE) {
 			return;
 		}
 		Sheep sheep = (Sheep)e.getEntity();
 		if (sheep.isDead() || sheep.isSheared()) {
 			return;
 		}
+		// Set random amount of wool to drop
 		Random r = new Random();
 		int random = r.nextInt(4);
 		if (random == 0) {
 			random = 1;
 		}
+		// Drop wool
 		sheep.getWorld().dropItemNaturally(sheep.getEyeLocation(), new ItemStack(Material.WOOL, random, sheep.getColor().getData()));
 		sheep.setSheared(true);
 	}
