@@ -3,8 +3,10 @@ package pl.betacraft.hardcore;
 import java.io.File;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.util.config.Configuration;
@@ -13,6 +15,82 @@ public class Hdb {
 
 	private static Configuration config = new Configuration(new File("plugins/BetaCraft/Hardcore", "bans.yml"));
 	private static Configuration sponges = new Configuration(new File("plugins/BetaCraft/Hardcore", "sponges.yml"));
+	private static Configuration cobble = new Configuration(new File("plugins/BetaCraft/Hardcore", "cobblex_stonedrop.yml"));
+	private static Configuration cobbledata = new Configuration(new File("plugins/BetaCraft/Hardcore", "cobblex_players.data"));
+
+	public static boolean canPlayerCobbleX(String player) {
+		cobbledata.load();
+		boolean b = cobbledata.getBoolean(player, false);
+		return b;
+	}
+
+	public static void setPlayerCobbleX(String player, boolean bln) {
+		cobbledata.load();
+		cobbledata.setProperty(player, bln);
+		cobbledata.save();
+	}
+
+	public static Material getRandomDropCobbleX() {
+		cobble.load();
+		List<String> items = new LinkedList<String>();
+		items.addAll(cobble.getStringList("cobblex_random_items", new LinkedList<String>()));
+		Random r = new Random();
+		int random = (r.nextInt(items.size() + 1));
+		String result = items.get(random);
+
+		List<String> valuables = getValueItems();
+		if (valuables.contains(result)) {
+			// Items which have more value are rarer than common items
+			boolean give = r.nextInt(50) == 4 ? true : false;
+			if (!give) {
+				return getRandomDropCobbleX();
+			}
+		}
+		return Material.getMaterial(result);
+	}
+
+	public static Material getRandomDropStoneDeep() {
+		cobble.load();
+		List<String> items = new LinkedList<String>();
+		items.addAll(cobble.getStringList("stonedrop_random_items_deep", new LinkedList<String>()));
+		Random r = new Random();
+		int random = (r.nextInt(items.size() + 1));
+		String result = items.get(random);
+
+		List<String> valuables = getValueItems();
+		if (valuables.contains(result)) {
+			// Items which have more value are rarer than common items
+			boolean give = r.nextInt(50) == 4 ? true : false;
+			if (!give) {
+				return getRandomDropStoneDeep();
+			}
+		}
+		return Material.getMaterial(result);
+	}
+
+	public static Material getRandomDropStone() {
+		cobble.load();
+		List<String> items = new LinkedList<String>();
+		items.addAll(cobble.getStringList("stonedrop_random_items", new LinkedList<String>()));
+		Random r = new Random();
+		int random = (r.nextInt(items.size() + 1));
+		String result = items.get(random);
+
+		List<String> valuables = getValueItems();
+		if (valuables.contains(result)) {
+			// Items which have more value are rarer than common items
+			boolean give = r.nextInt(50) == 4 ? true : false;
+			if (!give) {
+				return getRandomDropStone();
+			}
+		}
+		return Material.getMaterial(result);
+	}
+
+	public static List<String> getValueItems() {
+		cobble.load();
+		return cobble.getStringList("value_items", new LinkedList<String>());
+	}
 
 	public static List<String> getHardcoreWorlds() {
 		config.load();

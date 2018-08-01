@@ -3,6 +3,7 @@ package pl.betacraft.hardcore;
 import java.util.Random;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -11,8 +12,6 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
-
-import pl.betacraft.other.Other;
 
 public class HardcoreBlock extends BlockListener {
 
@@ -59,92 +58,36 @@ public class HardcoreBlock extends BlockListener {
 		}
 
 		// StoneDrop
-		if (e.getBlock().getType() == Material.STONE && e.getPlayer().getLocation().getBlockY() <= 20) {
-
-			ItemStack diamond = new ItemStack(Material.DIAMOND);
-			ItemStack gold = new ItemStack(Material.GOLD_ORE);
-			ItemStack iron = new ItemStack(Material.IRON_ORE);
-			ItemStack coal = new ItemStack(Material.COAL);
-			ItemStack tnt = new ItemStack(Material.TNT);
-			ItemStack redstone = new ItemStack(Material.REDSTONE);
-			ItemStack obsidian = new ItemStack(Material.OBSIDIAN);
-
-			Random rand = new Random();
-			int n = rand.nextInt(10) + 1;
-
-			if (n == 1) {
-				e.getPlayer().getInventory().addItem(diamond);
-				e.getPlayer().sendMessage(ChatColor.AQUA + "Dostales diament!");
+		if (e.getBlock().getType() == Material.STONE) {
+			boolean isHardcore = false;
+			for (String w : Hdb.getHardcoreWorlds()) {
+				if (w.equalsIgnoreCase(e.getBlock().getWorld().getName())) {
+					isHardcore = true;
+				}
 			}
-
-			else if (n == 2) {
-				e.getPlayer().getInventory().addItem(gold);
-				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales zloto!");
-				e.getPlayer().getInventory().addItem(redstone);
-				e.getPlayer().sendMessage(ChatColor.RED + "Dostales redstone!");
-			}
-
-			else if (n == 3) {
-				e.getPlayer().getInventory().addItem(iron);
-				e.getPlayer().sendMessage(ChatColor.GRAY + "Dostales zelazo!");
-				e.getPlayer().getInventory().addItem(tnt);
-				e.getPlayer().sendMessage(ChatColor.DARK_RED + "Dostales TNT!");
-				e.getPlayer().getInventory().addItem(obsidian);
-				e.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "Dostales obsidian!");
-				
-			}
-
-			else if (n == 4) {
-				e.getPlayer().getInventory().addItem(coal);
-				e.getPlayer().sendMessage(ChatColor.BLACK + "Dostales wegiel!");
-			}
-
-			else {
+			if (!isHardcore) {
 				return;
 			}
-		}
-		
-		if (e.getBlock().getType() == Material.STONE && e.getPlayer().getLocation().getBlockY() >= 20) {
-
-			ItemStack gold = new ItemStack(Material.GOLD_ORE);
-			ItemStack iron = new ItemStack(Material.IRON_ORE);
-			ItemStack coal = new ItemStack(Material.COAL);
-			ItemStack tnt = new ItemStack(Material.TNT);
-			ItemStack redstone = new ItemStack(Material.REDSTONE);
-			ItemStack obsidian = new ItemStack(Material.OBSIDIAN);
-
-			Random rand = new Random();
-			int n = rand.nextInt(10) + 1;
-
-			if (n == 1) {
-				e.getPlayer().getInventory().addItem(gold);
-				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales zloto!");
-				e.getPlayer().getInventory().addItem(redstone);
-				e.getPlayer().sendMessage(ChatColor.RED + "Dostales redstone!");
-			}
-
-			else if (n == 2) {
-				e.getPlayer().getInventory().addItem(iron);
-				e.getPlayer().sendMessage(ChatColor.GRAY + "Dostales zelazo!");
-				e.getPlayer().getInventory().addItem(tnt);
-				e.getPlayer().sendMessage(ChatColor.DARK_RED + "Dostales TNT!");
-				e.getPlayer().getInventory().addItem(obsidian);
-				e.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "Dostales obsidian!");
-			}
-
-			else if (n == 3) {
-				e.getPlayer().getInventory().addItem(coal);
-				e.getPlayer().sendMessage(ChatColor.BLACK + "Dostales wegiel!");
-			}
-
-			else {
+			if (e.getBlock().getY() <= 20) {
+				Material random = Hdb.getRandomDropStoneDeep();
+				Random r = new Random();
+				ItemStack item = new ItemStack(random, (r.nextInt(2) + 1));
+				e.getPlayer().getInventory().addItem(item);
+				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + random.name() + "!");
 				return;
+			}
+			if (e.getBlock().getY() >= 20) {
+				Material random = Hdb.getRandomDropStone();
+				Random r = new Random();
+				ItemStack item = new ItemStack(random, (r.nextInt(2) + 1));
+				e.getPlayer().getInventory().addItem(item);
+				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + random.name() + "!");
 			}
 		}
 
 		// CobbleX
 		if (e.getBlock().getType() == Material.MOSSY_COBBLESTONE) {
-			if (!Other.players_cobblex.contains(e.getPlayer().getName())) {
+			if (!Hdb.canPlayerCobbleX(e.getPlayer().getName())) {
 				return;
 			}
 			boolean isHardcore = false;
@@ -156,58 +99,12 @@ public class HardcoreBlock extends BlockListener {
 			if (!isHardcore) {
 				return;
 			}
-			ItemStack ironsword = new ItemStack(Material.IRON_SWORD);
-			ItemStack goldenapple = new ItemStack(Material.GOLDEN_APPLE);
-			ItemStack dirt = new ItemStack(Material.DIRT);
-			ItemStack jukebox = new ItemStack(Material.JUKEBOX);
-			ItemStack greenrecord = new ItemStack(Material.GREEN_RECORD);
-			ItemStack map = new ItemStack(Material.MAP);
-			ItemStack ironhelmet = new ItemStack(Material.IRON_HELMET);
-			ItemStack ironchestplate = new ItemStack(Material.IRON_CHESTPLATE);
-			ItemStack ironboots = new ItemStack(Material.IRON_BOOTS);
-			ItemStack ironleggins= new ItemStack(Material.IRON_LEGGINGS);
-			
-			Random rand = new Random();
-			int n = rand.nextInt(10) + 1;
-			if (n == 1) {
-				e.getPlayer().getInventory().addItem(ironsword);
-			}
-			
-			else if (n == 2) {
-				e.getPlayer().getInventory().addItem(goldenapple);
-			}
-			
-			else if (n == 3) {
-				e.getPlayer().getInventory().addItem(dirt);
-			}
-			
-			else if (n == 4) {
-				e.getPlayer().getInventory().addItem(jukebox);
-			}
-			
-			else if (n == 5) {
-				e.getPlayer().getInventory().addItem(greenrecord);
-			}
-			
-			else if (n == 6) {
-				e.getPlayer().getInventory().addItem(map);
-			}
-			
-			else if (n == 7) {
-				e.getPlayer().getInventory().addItem(ironhelmet);
-			}
-			
-			else if (n == 8) {
-				e.getPlayer().getInventory().addItem(ironchestplate);
-			}
-			
-			else if (n == 9) {
-				e.getPlayer().getInventory().addItem(ironboots);
-			}
-			
-			else if (n == 10) {
-				e.getPlayer().getInventory().addItem(ironleggins);
-			}
+			Material random = Hdb.getRandomDropCobbleX();
+			ItemStack item = new ItemStack(random, 1);
+			e.getPlayer().getInventory().addItem(item);
+			e.getPlayer().sendMessage(ChatColor.AQUA + "Dostales " + random.name() + "!");
+			e.getPlayer().playEffect(e.getPlayer().getLocation(), Effect.EXTINGUISH, 10);
+			return;
 		}
 	}
 }
