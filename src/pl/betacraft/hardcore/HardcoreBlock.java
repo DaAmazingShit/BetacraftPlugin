@@ -24,7 +24,7 @@ public class HardcoreBlock extends BlockListener {
 		}
 
 		// Moat Digger
-		if (e.getBlockPlaced().getType() == Material.JUKEBOX) {
+		if (e.getBlockPlaced().getType() == Material.JUKEBOX && e.getPlayer().isSneaking()) {
 			int x = e.getBlockPlaced().getX();
 			int y = e.getBlockPlaced().getY();
 			int z = e.getBlockPlaced().getZ();
@@ -68,9 +68,13 @@ public class HardcoreBlock extends BlockListener {
 			if (!isHardcore) {
 				return;
 			}
+			Random r = new Random();
+			boolean du = r.nextInt(Hdb.getRandomDropChance()) == 1;
+			if (!du) {
+				return;
+			}
 			if (e.getBlock().getY() <= 20) {
 				Material random = Hdb.getRandomDropStoneDeep();
-				Random r = new Random();
 				ItemStack item = new ItemStack(random, (r.nextInt(2) + 1));
 				e.getPlayer().getInventory().addItem(item);
 				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + random.name() + "!");
@@ -78,7 +82,6 @@ public class HardcoreBlock extends BlockListener {
 			}
 			if (e.getBlock().getY() >= 20) {
 				Material random = Hdb.getRandomDropStone();
-				Random r = new Random();
 				ItemStack item = new ItemStack(random, (r.nextInt(2) + 1));
 				e.getPlayer().getInventory().addItem(item);
 				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + random.name() + "!");

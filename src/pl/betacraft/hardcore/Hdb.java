@@ -35,7 +35,7 @@ public class Hdb {
 		List<String> items = new LinkedList<String>();
 		items.addAll(cobble.getStringList("cobblex_random_items", new LinkedList<String>()));
 		Random r = new Random();
-		int random = (r.nextInt(items.size() + 1));
+		int random = r.nextInt(items.size());
 		String result = items.get(random);
 
 		List<String> valuables = getValueItems();
@@ -54,7 +54,7 @@ public class Hdb {
 		List<String> items = new LinkedList<String>();
 		items.addAll(cobble.getStringList("stonedrop_random_items_deep", new LinkedList<String>()));
 		Random r = new Random();
-		int random = (r.nextInt(items.size() + 1));
+		int random = r.nextInt(items.size());
 		String result = items.get(random);
 
 		List<String> valuables = getValueItems();
@@ -73,7 +73,7 @@ public class Hdb {
 		List<String> items = new LinkedList<String>();
 		items.addAll(cobble.getStringList("stonedrop_random_items", new LinkedList<String>()));
 		Random r = new Random();
-		int random = (r.nextInt(items.size() + 1));
+		int random = r.nextInt(items.size());
 		String result = items.get(random);
 
 		List<String> valuables = getValueItems();
@@ -85,6 +85,11 @@ public class Hdb {
 			}
 		}
 		return Material.getMaterial(result);
+	}
+
+	public static int getRandomDropChance() {
+		cobble.load();
+		return cobble.getInt("stonedrop_chance", 10);
 	}
 
 	public static List<String> getValueItems() {

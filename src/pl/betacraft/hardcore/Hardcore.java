@@ -19,6 +19,8 @@ public class Hardcore {
 	public static void onEnable(JavaPlugin instance) {
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_RESPAWN, new HardcoreList(), Priority.Normal, instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_TELEPORT, new HardcoreList(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, new HardcoreBlock(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, new HardcoreBlock(), Priority.Normal, instance);
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {

@@ -1,3 +1,4 @@
+stonedrop_chance: 10
 stonedrop_random_items_deep:
 - DIAMOND
 - GOLD_ORE

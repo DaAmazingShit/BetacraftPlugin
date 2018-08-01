@@ -24,6 +24,8 @@ public class OtherPlayer extends PlayerListener {
 				else {
 					split[x] = ChatColor.BLUE + "@" + name;
 					p.playEffect(p.getEyeLocation(), Effect.SMOKE, 10);
+					p.playEffect(p.getEyeLocation(), Effect.EXTINGUISH, 10);
+					p.playEffect(p.getEyeLocation(), Effect.CLICK2, 10);
 				}
 			}
 		}
