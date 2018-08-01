@@ -1,5 +1,6 @@
 package pl.betacraft.chestprotection;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.craftbukkit.CraftServer;
@@ -45,6 +46,8 @@ public class ChestProtection {
 		pm.registerEvent(Type.PLAYER_INTERACT, new Players(),    Priority.Normal,  instanc);
 		
 		pm.registerEvent(Type.ENTITY_EXPLODE,  new Explosions(), Priority.Normal,  instanc);
+
+		Bukkit.getServer().getLogger().info(" [BetaCraft] ChestProtection: wlaczony.");
 	}
 
 	/**

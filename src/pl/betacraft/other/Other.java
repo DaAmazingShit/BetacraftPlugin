@@ -15,6 +15,9 @@ public class Other {
 	public static void onEnable(JavaPlugin instance) {
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new OtherPlayer(), Priority.Normal,
 				instance);
+
+		Bukkit.getServer().getLogger().info(" [BetaCraft] SoundEffect: wlaczony.");
+		Bukkit.getServer().getLogger().info(" [BetaCraft] Other: wlaczony.");
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {

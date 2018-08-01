@@ -26,7 +26,6 @@ import pl.betacraft.hardcore.SpongeBlock;
 import pl.betacraft.logblock.LogBlock;
 import pl.betacraft.moblimit.MobLimit;
 import pl.betacraft.other.Other;
-import pl.betacraft.sell.Sprzedaj;
 import pl.betacraft.wayback.Wayback;
 
 public class Betacraft extends JavaPlugin {
@@ -34,7 +33,6 @@ public class Betacraft extends JavaPlugin {
 	public void onEnable() {
 		LogBlock.onEnable(this);
 		Dzialecznik.onEnable();
-		Sprzedaj.onEnable();
 		Hardcore.onEnable(this);
 		Wayback.onEnable(this);
 		MobLimit.onEnable(this);

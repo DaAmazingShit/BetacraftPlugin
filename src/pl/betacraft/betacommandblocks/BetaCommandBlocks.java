@@ -26,6 +26,8 @@ public class BetaCommandBlocks {
 	public static void onEnable(JavaPlugin instance) {
 		config = new Configuration(new File("plugins/BetaCraft/CommandBlocks", "config.yml"));
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_INTERACT, new PLIST(), Priority.Normal, instance);
+
+		Bukkit.getServer().getLogger().info(" [BetaCraft] BetaCommandBlocks: wlaczony.");
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {

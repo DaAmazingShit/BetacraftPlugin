@@ -1,8 +1,8 @@
 name: BetaCraft
 main: pl.betacraft.moresteck.Betacraft
-version: 1.3.5-patch11
+version: 1.3.6
 authors: [Moresteck, Kazu]
-description: Zestaw autorskich pluginow na serwer BetaCraft 1.6.6-1.7.3
+description: Zestaw autorskich pluginow na serwer BetaCraft 1.7.3
 depend: [Essentials, Permissions]
 softdepend: [MultiVerse]
 
@@ -19,10 +19,6 @@ commands:
         usage: /lb
     rollback:
         usage: /rollback
-    kup:
-        usage: /kup
-    sprzedaj:
-        usage: /sprzedaj
     hban:
         usage: /hban
     hunban:

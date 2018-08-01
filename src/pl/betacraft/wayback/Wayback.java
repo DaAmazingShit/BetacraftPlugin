@@ -10,5 +10,7 @@ public class Wayback {
 	public static void onEnable(JavaPlugin instance) {
 		Bukkit.getServer().getPluginManager().registerEvent(Type.BLOCK_DAMAGE, new WBlock(), Priority.Normal, instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.ENTITY_DAMAGE, new WEntity(), Priority.Normal, instance);
+
+		Bukkit.getServer().getLogger().info(" [BetaCraft] Wayback: wlaczony.");
 	}
 }

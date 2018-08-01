@@ -21,6 +21,9 @@ public class Hardcore {
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_TELEPORT, new HardcoreList(), Priority.Normal, instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.BLOCK_PLACE, new HardcoreBlock(), Priority.Normal, instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.BLOCK_BREAK, new HardcoreBlock(), Priority.Normal, instance);
+
+		// CobbleX and StoneDrop are part of Hardcore
+		Bukkit.getServer().getLogger().info(" [BetaCraft] Hardcore: wlaczony.");
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
