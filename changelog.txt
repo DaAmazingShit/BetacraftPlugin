@@ -4,3 +4,4 @@ v1.3.6:
 - Reduced server lag
 - Added CobbleX
 - Added StoneDrop
+- Added SoundEffect

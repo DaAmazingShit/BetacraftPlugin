@@ -90,6 +90,7 @@ public class HardcoreBlock extends BlockListener {
 			if (!Hdb.canPlayerCobbleX(e.getPlayer().getName())) {
 				return;
 			}
+			Hdb.setPlayerCobbleX(e.getPlayer().getName(), false);
 			boolean isHardcore = false;
 			for (String w : Hdb.getHardcoreWorlds()) {
 				if (w.equalsIgnoreCase(e.getBlock().getWorld().getName())) {
