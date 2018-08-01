@@ -11,6 +11,8 @@ public class OtherPlayer extends PlayerListener {
 
 	@Override
 	public void onPlayerChat(PlayerChatEvent e) {
+
+		// SoundEffect
 		String[] split = e.getMessage().split(" ");
 		for (int x = 0; x < split.length; x++) {
 			if (split[x].startsWith("@")) {
