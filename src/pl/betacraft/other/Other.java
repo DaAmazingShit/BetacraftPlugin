@@ -49,7 +49,6 @@ public class Other {
 			p.sendMessage(ChatColor.RED + "Nie masz wystarczajacej ilosci cobble'a. Potrzeba 9 stakow.");
 			return true;
 		}
-		return true;
 
 		if (cmd.getName().equalsIgnoreCase("itemy")) {
 			if (!(sender instanceof Player)) {
@@ -60,5 +59,6 @@ public class Other {
 			p.sendMessage(ChatColor.LIGHT_PURPLE + "64 diamentowych blokow\n64 zelaznych blokow\n64 zlotych jablek\n64 obsidianu\n64 wegla");
 
 		}
+		return true;
 	}
 }
