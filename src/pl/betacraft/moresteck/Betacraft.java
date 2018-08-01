@@ -140,6 +140,7 @@ public class Betacraft extends JavaPlugin {
 		LogBlock.onCommand(sender, cmd, alias, args);
 		Dzialecznik.onCommand(sender, cmd, alias, args);
 		Hardcore.onCommand(sender, cmd, alias, args);
+		Other.onCommand(sender, cmd, alias, args);
 		BetaCommandBlocks.onCommand(sender, cmd, alias, args);
 		//Sprzedaj.onCommand(sender, cmd, alias, args);
 		return true;
