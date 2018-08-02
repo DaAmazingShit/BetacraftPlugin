@@ -1,4 +1,4 @@
-days: 7
+ban-time-minutes: 120
 worlds:
 - hardcore
 - hardcore_nether

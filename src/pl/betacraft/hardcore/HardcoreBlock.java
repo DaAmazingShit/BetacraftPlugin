@@ -13,6 +13,8 @@ import org.bukkit.event.block.BlockListener;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
 
+import pl.betacraft.other.ItemDB;
+
 public class HardcoreBlock extends BlockListener {
 
 	public void onBlockPlace(BlockPlaceEvent e) {
@@ -77,14 +79,14 @@ public class HardcoreBlock extends BlockListener {
 				Material random = Hdb.getRandomDropStoneDeep();
 				ItemStack item = new ItemStack(random, (r.nextInt(2) + 1));
 				e.getPlayer().getInventory().addItem(item);
-				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + random.name() + "!");
+				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + ItemDB.getName(random) + "!");
 				return;
 			}
 			if (e.getBlock().getY() >= 20) {
 				Material random = Hdb.getRandomDropStone();
 				ItemStack item = new ItemStack(random, (r.nextInt(2) + 1));
 				e.getPlayer().getInventory().addItem(item);
-				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + random.name() + "!");
+				e.getPlayer().sendMessage(ChatColor.GOLD + "Dostales " + ItemDB.getName(random) + "!");
 			}
 		}
 
@@ -106,7 +108,7 @@ public class HardcoreBlock extends BlockListener {
 			Material random = Hdb.getRandomDropCobbleX();
 			ItemStack item = new ItemStack(random, 1);
 			e.getPlayer().getInventory().addItem(item);
-			e.getPlayer().sendMessage(ChatColor.AQUA + "Dostales " + random.name() + "!");
+			e.getPlayer().sendMessage(ChatColor.AQUA + "Dostales " + ItemDB.getName(random) + "!");
 			e.getPlayer().playEffect(e.getPlayer().getLocation(), Effect.EXTINGUISH, 10);
 			return;
 		}

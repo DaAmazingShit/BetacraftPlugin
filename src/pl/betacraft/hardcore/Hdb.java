@@ -174,9 +174,9 @@ public class Hdb {
 		return names.contains(player);
 	}
 
-	public static int banDays() {
+	public static int banTime() {
 		config.load();
-		return config.getInt("days", 7);
+		return config.getInt("ban-time-minutes", 120);
 	}
 
 	// Sponge

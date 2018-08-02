@@ -62,7 +62,7 @@ public class HardcoreList extends PlayerListener {
 		Date date = new Date();
 
 		Calendar c = Calendar.getInstance();
-		c.add(GregorianCalendar.DAY_OF_MONTH, Hdb.banDays());
+		c.add(GregorianCalendar.MINUTE, Hdb.banTime());
 
 		date.setTime(c.getTimeInMillis());
 		String s = dateFormat.format(date);
