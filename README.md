@@ -1,2 +1,2 @@
 # BetacraftPlugin
-go out
+Original BetaCraft plugin for Polish [BetaCraft server](https://betacraft.ovh/).
