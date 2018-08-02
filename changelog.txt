@@ -1,5 +1,8 @@
 v1.3.7:
 - ?
+v1.3.6b:
+- Added ItemDB for displaying item names in-game
+- Ban time is now stored in minutes, update your config!
 v1.3.6:
 - Merged with MobLimit
 - Merged with BetaCommandBlocks
