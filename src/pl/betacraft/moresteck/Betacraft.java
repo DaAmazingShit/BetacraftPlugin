@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -19,10 +18,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import pl.betacraft.betacommandblocks.BetaCommandBlocks;
 import pl.betacraft.chestprotection.ChestProtection;
 import pl.betacraft.dzialecznik.Dzialecznik;
-import pl.betacraft.hardcore.Hardcore;
-import pl.betacraft.hardcore.HardcoreList;
-import pl.betacraft.hardcore.Hdb;
-import pl.betacraft.hardcore.SpongeBlock;
 import pl.betacraft.logblock.LogBlock;
 import pl.betacraft.moblimit.MobLimit;
 import pl.betacraft.other.Other;
@@ -33,7 +28,6 @@ public class Betacraft extends JavaPlugin {
 	public void onEnable() {
 		LogBlock.onEnable(this);
 		Dzialecznik.onEnable();
-		Hardcore.onEnable(this);
 		Wayback.onEnable(this);
 		MobLimit.onEnable(this);
 		BetaCommandBlocks.onEnable(this);
@@ -42,33 +36,6 @@ public class Betacraft extends JavaPlugin {
 		Bukkit.getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
 		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
 			public void run() {
-				if (!Hdb.getAllSponges().isEmpty()) {
-					for (SpongeBlock sb: Hdb.getAllSponges()) {
-						boolean matches = false;
-						for (String world: Hdb.getHardcoreWorlds()) {
-							if (!matches) {
-								if (sb.getSpongeBlock().getWorld().getName().equals(world)) {
-									matches = true;
-								}
-							}
-						}
-						if (matches) {
-							sb.generateStone();
-						}
-					}
-				}
-				if (!Hdb.getBannedPlayers().isEmpty()) {
-					for (String ep: Hdb.getBannedPlayers()) {
-						String[] x = ep.split("_");
-						String now = HardcoreList.getNowDate();
-						if (x[1].equals(now)) {
-							Hdb.unban(x[0]);
-							if (Bukkit.getServer().getPlayer(x[0]) != null) {
-								Bukkit.getServer().getPlayer(x[0]).sendMessage(ChatColor.RED + "Mozesz znowu grac na hardcore.");
-							}
-						}
-					}
-				}
 				BetaCommandBlocks.config.load();
 				if (BetaCommandBlocks.config.getKeys("commandblocks") != null) {
 					if (BetaCommandBlocks.config.getKeys("commandblocks") == null || BetaCommandBlocks.config.getKeys("commandblocks").isEmpty()) {
@@ -140,7 +107,6 @@ public class Betacraft extends JavaPlugin {
 		Other.onCommand(sender, cmd, alias, args);
 		LogBlock.onCommand(sender, cmd, alias, args);
 		Dzialecznik.onCommand(sender, cmd, alias, args);
-		Hardcore.onCommand(sender, cmd, alias, args);
 		ChestProtection.onCommand(sender, cmd, alias, args);
 		BetaCommandBlocks.onCommand(sender, cmd, alias, args);
 		//Sprzedaj.onCommand(sender, cmd, alias, args);

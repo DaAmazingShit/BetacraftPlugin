@@ -1,5 +1,5 @@
 v1.3.7:
-- ?
+- Removed Hardcore, as it is no longer used by BetaCraft server
 v1.3.6b:
 - Added ItemDB for displaying item names in-game
 - Ban time is now stored in minutes, update your config!
