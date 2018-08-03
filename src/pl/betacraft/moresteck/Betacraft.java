@@ -137,10 +137,10 @@ public class Betacraft extends JavaPlugin {
 	public void onDisable() {}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
+		Other.onCommand(sender, cmd, alias, args);
 		LogBlock.onCommand(sender, cmd, alias, args);
 		Dzialecznik.onCommand(sender, cmd, alias, args);
 		Hardcore.onCommand(sender, cmd, alias, args);
-		Other.onCommand(sender, cmd, alias, args);
 		ChestProtection.onCommand(sender, cmd, alias, args);
 		BetaCommandBlocks.onCommand(sender, cmd, alias, args);
 		//Sprzedaj.onCommand(sender, cmd, alias, args);

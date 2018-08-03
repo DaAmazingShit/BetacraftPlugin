@@ -27,6 +27,9 @@ public class Hardcore {
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
+		if (!(sender instanceof Player)) {
+			return true;
+		}
 		if (cmd.getName().equalsIgnoreCase("hunban")) {
 			if (!has(sender, "betacraft.hc.unban")) {
 				sender.sendMessage("Brak dostepu.");

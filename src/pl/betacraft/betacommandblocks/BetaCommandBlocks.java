@@ -31,6 +31,9 @@ public class BetaCommandBlocks {
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
+		if (!(sender instanceof Player)) {
+			return true;
+		}
 		if (cmd.getName().equalsIgnoreCase("setblock")) {
 			Player p = (Player)sender;
 			if (!Permissions.Security.has(p, "commandblocks.use")) {

@@ -17,6 +17,9 @@ public class Dzialecznik {
 	public void onDisable() {}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
+		if (!(sender instanceof Player)) {
+			return true;
+		}
 		Player p = (Player)sender;
 		if (cmd.getName().equalsIgnoreCase("dzialka")) {
 			if (args.length == 0) {
