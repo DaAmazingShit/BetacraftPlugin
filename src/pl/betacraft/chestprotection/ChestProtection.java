@@ -51,7 +51,7 @@ public class ChestProtection {
 	}
 
 	/**
-	 * Gets the version of the CPPlugin.
+	 * Gets the version of the ChestProtection.
 	 */
 	public static String getVersion() {
 		return instance.getDescription().getVersion();

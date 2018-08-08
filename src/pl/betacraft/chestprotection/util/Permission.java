@@ -62,10 +62,10 @@ public class Permission {
 		}
 
 		/**
-		 * Returns Perm.class
+		 * Returns an instance of Perm
 		 * 
 		 * @param node
-		 * @return Perm.class
+		 * @return Perm instance
 		 */
 		public static Perm getPerm(String perm) {
 			return schowek.get(perm);

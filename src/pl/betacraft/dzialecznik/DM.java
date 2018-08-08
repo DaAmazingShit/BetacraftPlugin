@@ -9,22 +9,22 @@ import org.bukkit.util.config.Configuration;
 
 public class DM {
 
-	public static Configuration db = new Configuration(new File("plugins/DZIALKI", "graczy.yml"));
+	public static Configuration db = new Configuration(new File("plugins/BetaCraft/Dzialecznik", "dzialki.yml"));
 
-	public static boolean hasPlayer(String p, String miasto) {
+	public static boolean hasPlayer(String p) {
 		db.load();
-		return db.getProperty("dzialki." + p + "." + miasto) != null;
+		return db.getProperty("dzialki." + p) != null;
 	}
 
-	public static boolean hasBazar(String p, String miasto) {
+	public static boolean hasBazar(String p) {
 		db.load();
-		return db.getProperty("bazary." + p + "." + miasto) != null;
+		return db.getProperty("bazary." + p) != null;
 	}
 
-	public static Location getLocation(String p, String dzialkabazar, String miasto) {
+	public static Location getLocation(String p, String dzialkabazar) {
 		db.load();
 		Location ret = null;
-		String node = db.getString(dzialkabazar + "." + p + "." + miasto, null);
+		String node = db.getString(dzialkabazar + "." + p, null);
 		String[] coords = node.split(",");
 		double x = Double.parseDouble(coords[0]);
 		double y = Double.parseDouble(coords[1]);
@@ -33,20 +33,20 @@ public class DM {
 		return ret;
 	}
 
-	public static boolean setLocation(Player p, String who, String dzialkabazar, String miasto) {
+	public static boolean setLocation(Player p, String who, String dzialkabazar) {
 		db.load();
 		String location = null;
 		location = p.getLocation().getBlockX() + "," + 
 				p.getLocation().getBlockY() + "," + 
 				p.getLocation().getBlockZ();
-		db.setProperty(dzialkabazar + "." + who + "." + miasto, location);
+		db.setProperty(dzialkabazar + "." + who, location);
 		db.save();
 		return true;
 	}
 
-	public static boolean delete(String p, String dzialkabazar, String miasto) {
+	public static boolean delete(String p, String dzialkabazar) {
 		db.load();
-		db.removeProperty(dzialkabazar + "." + p + "." + miasto);
+		db.removeProperty(dzialkabazar + "." + p);
 		db.save();
 		return true;
 	}

@@ -52,10 +52,10 @@ public class LanguageManager {
 	public String playersOwningThis        = null;
 
 	/**
-	 * Reloads language files or setups them
+	 * (Re)Loads language files or creates them
 	 */
 	public void setup() {
-		File langFile = new File("plugins/ChestProtection", "lang.yml");
+		File langFile = new File("plugins/BetaCraft/ChestProtection", "lang.yml");
 		config = new ConfigUtil(langFile);
 		config.load();
 		if (config.getProperty("lang.custom") == null) {
@@ -70,7 +70,7 @@ public class LanguageManager {
 			this.Default();
 			return;
 		}
-		File file = new File("plugins/ChestProtection", isOff);
+		File file = new File("plugins/BetaCraft/ChestProtection", isOff);
 		if (file.exists()) {
 			langSource = new ConfigUtil(file);
 			langSource.load();
@@ -179,10 +179,10 @@ public class LanguageManager {
 	}
 
 	/**
-	 * Displays help to the player
+	 * Displays help to command sender
 	 * 
-	 * @param cmd what player typed
-	 * @param p player
+	 * @param cmd command
+	 * @param sender CommandSender
 	 */
 	public void displayHelp(String cmd, CommandSender sender) {
 		if (!(sender instanceof Player)) {

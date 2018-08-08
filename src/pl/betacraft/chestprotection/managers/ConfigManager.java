@@ -10,7 +10,7 @@ import pl.betacraft.chestprotection.util.Operation;
  */
 public class ConfigManager {
 
-	public static ConfigUtil config = new ConfigUtil(new File("plugins/ChestProtection", "config.yml"));
+	public static ConfigUtil config = new ConfigUtil(new File("plugins/BetaCraft/ChestProtection", "config.yml"));
 
 	/**
 	 * Returns true if auto protection is enabled.
@@ -51,10 +51,10 @@ public class ConfigManager {
 			}
 			config.setHeader(
 					"# Info:",
-					"#     Author: DaAmazingShit",
+					"#     Author: Moresteck (DaAmazingShit)",
 					"#     Contact:",
-					"#     - Github:  DaAmazingShit",
-					"#     - e-mail:  da.amazing.shit@interia.pl",
+					"#     - Github:  Moresteck (DaAmazingShit)",
+					"#     - e-mail:  moresteck@interia.pl",
 					"# Warning! ChestProtection becomes weird while using it in spawn-protection region"
 			);
 			config.setProperty("version", cp.instance.getDescription().getVersion());

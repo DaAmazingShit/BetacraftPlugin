@@ -20,6 +20,7 @@ import pl.betacraft.chestprotection.ChestProtection;
 import pl.betacraft.dzialecznik.Dzialecznik;
 import pl.betacraft.logblock.LogBlock;
 import pl.betacraft.moblimit.MobLimit;
+import pl.betacraft.moressentials.Moressentials;
 import pl.betacraft.other.Other;
 import pl.betacraft.wayback.Wayback;
 
@@ -33,7 +34,8 @@ public class Betacraft extends JavaPlugin {
 		BetaCommandBlocks.onEnable(this);
 		ChestProtection.onEnable(this);
 		Other.onEnable(this);
-		Bukkit.getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
+		Moressentials.onEnable(this);
+		Bukkit.getServer().getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
 		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
 			public void run() {
 				BetaCommandBlocks.config.load();
@@ -109,7 +111,7 @@ public class Betacraft extends JavaPlugin {
 		Dzialecznik.onCommand(sender, cmd, alias, args);
 		ChestProtection.onCommand(sender, cmd, alias, args);
 		BetaCommandBlocks.onCommand(sender, cmd, alias, args);
-		//Sprzedaj.onCommand(sender, cmd, alias, args);
+		Moressentials.onCommand(sender, cmd, alias, args);
 		return true;
 	}
 }

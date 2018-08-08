@@ -31,9 +31,6 @@ public class BetaCommandBlocks {
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
-		if (!(sender instanceof Player)) {
-			return true;
-		}
 		if (cmd.getName().equalsIgnoreCase("setblock")) {
 			Player p = (Player)sender;
 			if (!Permissions.Security.has(p, "commandblocks.use")) {
@@ -52,6 +49,9 @@ public class BetaCommandBlocks {
 			Material block = Material.getMaterial(args[3]);
 			
 			Bukkit.getServer().getWorld(args[4]).getBlockAt(x, y, z).setType(block);
+			return true;
+		}
+		if (!(sender instanceof Player)) {
 			return true;
 		}
 		Player p = (Player)sender;

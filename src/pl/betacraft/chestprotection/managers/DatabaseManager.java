@@ -18,7 +18,7 @@ import pl.betacraft.chestprotection.util.Operation;
  */
 public class DatabaseManager {
 
-	public static ConfigUtil config = new ConfigUtil(new File("plugins/ChestProtection", "database.yml"));
+	public static ConfigUtil config = new ConfigUtil(new File("plugins/BetaCraft/ChestProtection", "database.yml"));
 
 	/**
 	 * Returns true if player owns container at an location.
@@ -90,7 +90,7 @@ public class DatabaseManager {
 	 * 
 	 * @param p playername
 	 * @param loc location
-	 * @return operation - NULL, ALREADY_EXISTS, SUCCESS, FAIL
+	 * @return operation - NOT_PROTECTED, ALREADY_EXISTS, SUCCESS, FAIL
 	 */
 	public static Operation addPlayerToContainer(String p, Location loc) {
 		try {

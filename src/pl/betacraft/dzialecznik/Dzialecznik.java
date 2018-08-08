@@ -23,8 +23,8 @@ public class Dzialecznik {
 		Player p = (Player)sender;
 		if (cmd.getName().equalsIgnoreCase("dzialka")) {
 			if (args.length == 0) {
-				if (DM.hasPlayer(p.getName(), "Kopytnik")) {
-					Location loc = DM.getLocation(p.getName(), "dzialki", "Kopytnik");
+				if (DM.hasPlayer(p.getName())) {
+					Location loc = DM.getLocation(p.getName(), "dzialki");
 					loc.setWorld(Bukkit.getServer().getWorld("world"));
 					p.teleport(loc);
 					p.sendMessage(ChatColor.GREEN + " [Dzialecznik] Teleportowano na dzialke.");
@@ -45,7 +45,7 @@ public class Dzialecznik {
 					p.sendMessage(ChatColor.RED + " [Dzialecznik] Wybierz gracza, dla którego chcesz ustawic dzialke!");
 					return true;
 				}
-				boolean done = DM.setLocation(p, args[1], "dzialki", "Kopytnik");
+				boolean done = DM.setLocation(p, args[1], "dzialki");
 				p.sendMessage(done == true ? ChatColor.BLUE + " [Dzialecznik] Ustawiono dzialke dla gracza " + args[1] + "." : ChatColor.RED + " [Dzialecznik] Cos poszlo nie tak!");
 				return true;
 			}
@@ -58,13 +58,13 @@ public class Dzialecznik {
 					p.sendMessage(ChatColor.RED + " [Dzialecznik] Wybierz gracza, któremu chcesz usunac dzialke!");
 					return true;
 				}
-				boolean done = DM.delete(args[1], "dzialki", args[2]);
+				boolean done = DM.delete(args[1], "dzialki");
 				p.sendMessage(done == true ? ChatColor.BLUE + " [Dzialecznik] Usunieto dzialke graczowi " + args[1] + "." : ChatColor.RED + " [Dzialecznik] Cos poszlo nie tak!");
 				return true;
 			}
 			else {
-				if (DM.hasPlayer(args[0], "Kopytnik")) {
-					p.teleport(DM.getLocation(args[0], "dzialki", "Kopytnik"));
+				if (DM.hasPlayer(args[0])) {
+					p.teleport(DM.getLocation(args[0], "dzialki"));
 					p.sendMessage(ChatColor.GREEN + " [Dzialecznik] Teleportowano na dzialke " + args[0]);
 				}
 				else {
@@ -75,8 +75,8 @@ public class Dzialecznik {
 		}
 		if (cmd.getName().equalsIgnoreCase("bazar")) {
 			if (args.length == 0) {
-				if (DM.hasBazar(p.getName(), "Bazar")) {
-					Location loc = DM.getLocation(p.getName(), "bazary", "Bazar");
+				if (DM.hasBazar(p.getName())) {
+					Location loc = DM.getLocation(p.getName(), "bazary");
 					loc.setWorld(Bukkit.getServer().getWorld("world"));
 					p.teleport(loc);
 					p.sendMessage(ChatColor.GREEN + " [Bazarnik] Teleportowano na bazar.");
@@ -96,7 +96,7 @@ public class Dzialecznik {
 					p.sendMessage(ChatColor.RED + " [Bazarnik] Wybierz gracza, dla którego chcesz ustawic bazar!");
 					return true;
 				}
-				boolean done = DM.setLocation(p, args[1], "bazary", "Bazar");
+				boolean done = DM.setLocation(p, args[1], "bazary");
 				p.sendMessage(done == true ? ChatColor.BLUE + " [Bazarnik] Ustawiono bazar dla gracza " + args[1] : ChatColor.RED + " [Bazarnik] Cos poszlo nie tak!");
 				return true;
 			}
@@ -109,13 +109,13 @@ public class Dzialecznik {
 					p.sendMessage(ChatColor.RED + " [Bazarnik] Wybierz gracza, któremu chcesz usunac bazar!");
 					return true;
 				}
-				boolean done = DM.delete(args[1], "bazary", "Bazar");
+				boolean done = DM.delete(args[1], "bazary");
 				p.sendMessage(done == true ? ChatColor.BLUE + " [Bazarnik] Usunieto bazar graczowi " + args[1] : ChatColor.RED + " [Bazarnik] Cos poszlo nie tak!");
 				return true;
 			}
 			else {
-				if (DM.hasBazar(args[0], "Bazar")) {
-					p.teleport(DM.getLocation(args[0], "bazary", "Bazar"));
+				if (DM.hasBazar(args[0])) {
+					p.teleport(DM.getLocation(args[0], "bazary"));
 					p.sendMessage(ChatColor.GREEN + " [Dzialecznik] Teleportowano na bazar " + args[0]);
 				}
 				else {

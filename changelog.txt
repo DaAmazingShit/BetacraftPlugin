@@ -1,3 +1,10 @@
+v1.4.0:
+- Introduced AdminChat
+- Small changes and fixes
+v1.3.9:
+- Introduced ZoO!
+v1.3.8:
+- Started working on Mssentials
 v1.3.7:
 - Removed Hardcore, as it is no longer used by BetaCraft server
 v1.3.6b:
