@@ -30,12 +30,16 @@ public class BetaCommandBlocks {
 		Bukkit.getServer().getLogger().info(" [BetaCraft] BetaCommandBlocks: wlaczony.");
 	}
 
+	// betacraft.commandblocks.use
+
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("setblock")) {
-			Player p = (Player)sender;
-			if (!Permissions.Security.has(p, "commandblocks.use")) {
-				sender.sendMessage(ChatColor.RED + "Brak dostepu");
-				return true;
+			if (sender instanceof Player) {
+				Player p = (Player)sender;
+				if (!Permissions.Security.has(p, "betacraft.commandblocks.use")) {
+					sender.sendMessage(ChatColor.RED + "Brak dostepu");
+					return true;
+				}
 			}
 			if (args.length == 0 || args.length == 1 || args.length == 2 || args.length == 3 || args.length == 4) {
 				return true;
@@ -56,7 +60,7 @@ public class BetaCommandBlocks {
 		}
 		Player p = (Player)sender;
 		if (cmd.getName().equalsIgnoreCase("cb")) {
-			if (!Permissions.Security.has(p, "commandblocks.use")) {
+			if (!Permissions.Security.has(p, "betacraft.commandblocks.use")) {
 				p.sendMessage(ChatColor.RED + "Brak dostepu");
 				return true;
 			}

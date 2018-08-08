@@ -1,3 +1,6 @@
+v1.4.1:
+- Extended Mssentials by some commands
+- Fixed permission nodes not starting by 'betacraft.' (except ChestProtection)
 v1.4.0:
 - Introduced AdminChat
 - Small changes and fixes

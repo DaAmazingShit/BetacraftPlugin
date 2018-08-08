@@ -25,6 +25,45 @@ import pl.betacraft.other.Other;
 import pl.betacraft.wayback.Wayback;
 
 public class Betacraft extends JavaPlugin {
+	/*
+	 * Permissions:
+	 * 
+	 * ChestProtection:
+	 * - cp.admin.info
+	 * - cp.admin.access
+	 * - cp.admin.reload
+	 * - cp.admin.remove.others
+	 * - cp.use.create
+	 * - cp.use.info
+	 * - cp.use.player.add
+	 * - cp.use.player.remove
+	 * - cp.use.remove.self
+	 * 
+	 * Mssentials:
+	 * - betacraft.mssentials.nick.self
+	 * - betacraft.mssentials.nick.others
+	 * - betacraft.mssentials.commandspy
+	 * - betacraft.mssentials.invsee
+	 * - betacraft.mssentials.ci
+	 * 
+	 * LogBlock:
+	 * - betacraft.logblock.rollback
+	 * 
+	 * BetaCommandBlocks:
+	 * - betacraft.commandblocks.use
+	 * 
+	 * ZoO!:
+	 * - betacraft.zoo
+	 * 
+	 * Dzialecznik:
+	 * - betacraft.dzialecznik.admin
+	 * 
+	 * AdminChat:
+	 * - betacraft.admin
+	 * 
+	 * Other:
+	 * - betacraft.admin
+	 */
 
 	public void onEnable() {
 		LogBlock.onEnable(this);
@@ -103,7 +142,9 @@ public class Betacraft extends JavaPlugin {
 		}, 0L, 20L);
 	}
 
-	public void onDisable() {}
+	public void onDisable() {
+		Moressentials.onDisable();
+	}
 
 	public boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
 		Other.onCommand(sender, cmd, alias, args);

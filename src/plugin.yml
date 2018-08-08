@@ -1,38 +1,76 @@
 name: BetaCraft
 main: pl.betacraft.moresteck.Betacraft
-version: 1.4.0
+version: 1.4.1
 authors: [Moresteck, Kazu]
 description: Zestaw autorskich pluginow na serwer BetaCraft 1.7.3
+website: https://betacraft.ovh
 depend: [Permissions]
 softdepend: [MultiVerse]
 
 commands:
     dzialka:
+        aliases: [bcdzialka, posesja]
         usage: /dzialka
     bazar:
+        aliases: [bcbazar]
         usage: /bazar
     seed:
+        aliases: [bcseed]
         usage: /seed
     save:
         aliases: [bcsave]
         usage: /save
     lb:
-        aliases: [logblock]
+        aliases: [bclb, logblock]
         usage: /lb
     rollback:
+        aliases: [bcrollback]
         usage: /rollback
     cb:
+        aliases: [bccb]
         usage: /cb
     setblock:
+        aliases: [bcsetblock]
         usage: /setblock
     cp:
+        aliases: [bccp]
         usage: /cp
     cpreload:
+        aliases: [bccpreload]
         usage: /cpreload
     clearitems:
+        aliases: [bcci]
         usage: /clearitems
     adminchat:
-        aliases: [ac]
+        aliases: [bcac, ac]
         usage: /adminchat
     zoo:
+        aliases: [bczoo]
         usage: /zoo
+    god:
+        aliases: [bcgod]
+        usage: /god
+    seen:
+        aliases: [bcseen]
+        usage: /seen
+    cinv:
+        aliases: [bccinv]
+        usage: /cinv
+    nick:
+        aliases: [bcnick]
+        usage: /nick
+    back:
+        aliases: [bcback]
+        usage: /back
+    ignore:
+        aliases: [bcignore]
+        usage: /ignore
+    ignorelist:
+        aliases: [bcignorelist]
+        usage: /ignorelist
+    invsee:
+        aliases: [bcinvsee]
+        usage: /invsee
+    commandspy:
+        aliases: [bccommandspy]
+        usage: /commandspy

@@ -1,4 +1,4 @@
-package pl.betacraft.moressentials;
+package pl.betacraft.other;
 
 import java.util.LinkedList;
 import java.util.List;

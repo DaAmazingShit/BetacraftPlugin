@@ -16,13 +16,12 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.nijikokun.bukkit.Permissions.Permissions;
 
-import pl.betacraft.moressentials.ZOO;
-
 // Small things go here
 public class Other {
 	public static final List<String> adminchat = new LinkedList<String>();
 
 	public static void onEnable(JavaPlugin instance) {
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new ZOO(), Priority.Normal, instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new OtherPlayer(), Priority.Normal,
 				instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, new OtherPlayer(), Priority.Normal,
@@ -33,6 +32,9 @@ public class Other {
 		Bukkit.getServer().getLogger().info(" [BetaCraft] AdminChat: wlaczony.");
 		Bukkit.getServer().getLogger().info(" [BetaCraft] Other: wlaczony.");
 	}
+
+	// betacraft.zoo
+	// betacraft.admin
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
 		if (cmd.getName().equalsIgnoreCase("zoo")) {
@@ -113,6 +115,17 @@ public class Other {
 			}
 		}
 		if (cmd.getName().equalsIgnoreCase("save")) {
+			if (!(sender instanceof Player)) {
+				for (World w : Bukkit.getServer().getWorlds()) {
+					w.save();
+					sender.sendMessage(ChatColor.GREEN + "Zapisano swiat: " + ChatColor.RED + w.getName());
+				}
+				return true;
+			}
+			Player p = (Player)sender;
+			if (!Permissions.Security.has(p, "betacraft.admin")) {
+				return true;
+			}
 			for (World w : Bukkit.getServer().getWorlds()) {
 				w.save();
 				sender.sendMessage(ChatColor.GREEN + "Zapisano swiat: " + ChatColor.RED + w.getName());
@@ -151,13 +164,6 @@ public class Other {
 				sender.sendMessage("Usunieto " + i + " entity.");
 				i = 0;
 				sender.sendMessage("Pozostalo: " + w.getEntities().size());
-			}
-			return true;
-		}
-		if (cmd.getName().equalsIgnoreCase("save")) {
-			for (World w : Bukkit.getServer().getWorlds()) {
-				w.save();
-				sender.sendMessage(ChatColor.GREEN + "Zapisano swiat: " + ChatColor.RED + w.getName());
 			}
 			return true;
 		}

@@ -61,6 +61,8 @@ public class LogBlock {
 		Bukkit.getServer().getLogger().info(" [BetaCraft] LogBlock: wlaczony.");
 	}
 
+	// betacraft.logblock.rollback
+
 	public static boolean onCommand(CommandSender s, Command c, String ss, String[] a) {
 		if (c.getName().equalsIgnoreCase("lb")) {
 			if (s instanceof ConsoleCommandSender || s instanceof ColouredConsoleSender) {
@@ -92,7 +94,7 @@ public class LogBlock {
 				return true;
 			}
 			Player p = (Player)s;
-			if (!Permissions.Security.has(p, "logblock.rollback")) {
+			if (!Permissions.Security.has(p, "betacraft.logblock.rollback")) {
 				p.sendMessage(ChatColor.RED + "Brak pozwolenia.");
 				return true;
 			}

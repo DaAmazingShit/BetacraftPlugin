@@ -14,7 +14,8 @@ public class Dzialecznik {
 	public static void onEnable() {
 		Bukkit.getServer().getLogger().info(" [BetaCraft] Dzialecznik: wlaczony.");
 	}
-	public void onDisable() {}
+
+	// betacraft.dzialecznik.admin
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String alias, String[] args) {
 		if (!(sender instanceof Player)) {
@@ -37,7 +38,7 @@ public class Dzialecznik {
 				}
 			}
 			if (args[0].equalsIgnoreCase("ustaw")) {
-				if (!Permissions.Security.has(p, "dzialecznik.admin")) {
+				if (!Permissions.Security.has(p, "betacraft.dzialecznik.admin")) {
 					p.sendMessage(ChatColor.RED + " [Dzialecznik] Brak dostepu.");
 					return true;
 				}
@@ -50,7 +51,7 @@ public class Dzialecznik {
 				return true;
 			}
 			if (args[0].equalsIgnoreCase("usun")) {
-				if (!Permissions.Security.has(p, "dzialecznik.admin")) {
+				if (!Permissions.Security.has(p, "betacraft.dzialecznik.admin")) {
 					p.sendMessage(ChatColor.RED + " [Dzialecznik] Brak dostepu.");
 					return true;
 				}
@@ -88,7 +89,7 @@ public class Dzialecznik {
 				}
 			}
 			if (args[0].equalsIgnoreCase("ustaw")) {
-				if (!Permissions.Security.has(p, "dzialecznik.admin")) {
+				if (!Permissions.Security.has(p, "betacraft.dzialecznik.admin")) {
 					p.sendMessage(ChatColor.RED + " [Bazarnik] Brak dostepu.");
 					return true;
 				}
@@ -101,7 +102,7 @@ public class Dzialecznik {
 				return true;
 			}
 			if (args[0].equalsIgnoreCase("usun")) {
-				if (!Permissions.Security.has(p, "dzialecznik.admin")) {
+				if (!Permissions.Security.has(p, "betacraft.dzialecznik.admin")) {
 					p.sendMessage(ChatColor.RED + " [Bazarnik] Brak dostepu.");
 					return true;
 				}
