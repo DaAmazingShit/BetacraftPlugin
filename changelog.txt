@@ -1,3 +1,5 @@
+v1.4.1-patch1:
+- Fixed Mssentials events
 v1.4.1:
 - Extended Mssentials by some commands
 - Fixed permission nodes not starting by 'betacraft.' (not for ChestProtection tho)

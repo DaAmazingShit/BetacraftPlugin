@@ -21,11 +21,11 @@ public class Moressentials {
 	public static Map<String, PlayerInventory> inventories = new HashMap<String, PlayerInventory>();
 
 	public static void onEnable(JavaPlugin instance) {
-		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_QUIT, new L(), Priority.Normal, instance);
-		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, new L(), Priority.Normal, instance);
-		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_TELEPORT, new L(), Priority.Normal, instance);
-		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_COMMAND_PREPROCESS, new L(), Priority.Normal, instance);
-		Bukkit.getServer().getPluginManager().registerEvent(Type.ENTITY_DAMAGE, new L(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_QUIT, new PL(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, new PL(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_TELEPORT, new PL(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_COMMAND_PREPROCESS, new PL(), Priority.Normal, instance);
+		Bukkit.getServer().getPluginManager().registerEvent(Type.ENTITY_DAMAGE, new EL(), Priority.Normal, instance);
 		Bukkit.getServer().getLogger().info(" [BetaCraft] Mssentials: wlaczone");
 	}
 
