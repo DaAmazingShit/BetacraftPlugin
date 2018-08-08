@@ -68,8 +68,8 @@ public class Moressentials {
 					sender.sendMessage(ChatColor.GRAY + "Wyczysciles ekwipunek gracza " + args[0] + ".");
 					target.sendMessage(ChatColor.GRAY + "Ekwipunek wyczyszczony przez <CONSOLE>.");
 				}
+				return true;
 			}
-			return true;
 		}
 		if (cmd.getName().equalsIgnoreCase("nick")) {
 			if (!(sender instanceof Player)) {
@@ -90,8 +90,8 @@ public class Moressentials {
 					tar.sendMessage(ChatColor.GRAY + "Ustawiono twój nick na: " + display + ".");
 				}
 				sender.sendMessage(ChatColor.GRAY + "Ustawiono nick gracza " + name + " na: " + display + ".");
+				return true;
 			}
-			return true;
 		}
 		if (!(sender instanceof Player)) {
 			return true;
@@ -157,6 +157,9 @@ public class Moressentials {
 					p.getInventory().setArmorContents(pi.getArmorContents());
 					Moressentials.inventories.remove(p.getName());
 					p.sendMessage(ChatColor.GRAY + "Przywrócono twój ekwipunek.");
+				}
+				else {
+					p.sendMessage("/invsee <gracz>");
 				}
 				return true;
 			}

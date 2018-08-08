@@ -149,6 +149,6 @@ public class PDB {
 	}
 
 	public static String loc(Location loc) {
-		return loc.getWorld().getName() + ",x" + loc.getBlockX() + ",y" + loc.getBlockY() + ",z" + loc.getBlockZ();
+		return loc.getWorld().getName() + "," + loc.getBlockX() + "," + loc.getBlockY() + "," + loc.getBlockZ();
 	}
 }
