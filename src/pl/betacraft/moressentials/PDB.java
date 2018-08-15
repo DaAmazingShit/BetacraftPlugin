@@ -7,8 +7,11 @@ import java.util.List;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.craftbukkit.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.PlayerInventory;
+import org.bukkit.material.MaterialData;
 import org.bukkit.util.config.Configuration;
 
 public class PDB {
@@ -122,6 +125,74 @@ public class PDB {
 		db.load();
 		db.setProperty("spy", on);
 		db.save();
+	}
+
+	public static void writeInventory(Player player) {
+		db = new Configuration(new File("BetaCraft/Mssentials/data", player.getName() + ".dat"));
+		db.load();
+		PlayerInventory pi = player.getInventory();
+		StringBuilder inventory = new StringBuilder();
+		for (int x = 0; x < pi.getSize(); x++) {
+			ItemStack is = pi.getItem(x);
+			if (inventory.toString() == null) {
+				if (is.getData() != null) {
+					inventory.append(is.getTypeId()+ ":" + 
+				        is.getAmount() + ":" + 
+						is.getDurability() + ":" + 
+				        is.getData().getData());
+				}
+				else {
+					inventory.append(is.getTypeId()+ ":" + 
+					        is.getAmount() + ":" + 
+							is.getDurability() + ":" + 
+					        0);
+				}
+			}
+			else {
+				if (is.getData() != null) {
+					inventory.append("," + is.getTypeId()+ ":" +
+				        is.getAmount() + ":" +
+						is.getDurability() + ":" +
+				        is.getData().getData());
+				}
+				else {
+					inventory.append("," + is.getTypeId()+ ":" +
+					        is.getAmount() + ":" +
+							is.getDurability() + ":" +
+					        0);
+				}
+			}
+		}
+		db.setProperty("inventory", inventory.toString());
+		db.save();
+	}
+
+	public static boolean readInventory(Player player) {
+		db = new Configuration(new File("BetaCraft/Mssentials/data", player.getName() + ".dat"));
+		db.load();
+		String inv = db.getString("inventory", null);
+		if (inv == null) {
+			return false;
+		}
+		String[] split = inv.split(",");
+		PlayerInventory pi = player.getInventory();
+		for (int x = 0; x < split.length; x++) {
+			System.out.println("SPLOT " + split[x]);
+			String[] splyt = split[x].split(":");
+			System.out.println("SPLOT 2 " + splyt[0]);
+			int type = Integer.parseInt(splyt[0]);
+			int amount = Integer.parseInt(splyt[1]);
+			short durability = Short.parseShort(splyt[2]);
+			byte data = Byte.parseByte(splyt[3]);
+			CraftItemStack stack = (CraftItemStack) pi.getItem(x);
+			stack.setTypeId(type);
+			if (amount > 1) {
+				stack.setAmount(amount);
+			}
+			stack.setDurability(durability);
+			stack.setData(new MaterialData(type, data));
+		}
+		return true;
 	}
 
 	public static void tpaccept(Player p, String fromwho) {

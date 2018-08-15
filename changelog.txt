@@ -1,3 +1,9 @@
+v1.4.1-patch3:
+- Fixed /nick
+- Fixed ignoring players
+v1.4.1-patch2:
+- Fixed players not being able to execute commands
+- Fixed /back
 v1.4.1-patch1:
 - Fixed Mssentials events
 v1.4.1:

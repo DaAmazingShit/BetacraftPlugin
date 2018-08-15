@@ -1,17 +1,30 @@
 package pl.betacraft.moressentials;
 
+import java.util.Iterator;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.inventory.PlayerInventory;
 
 import pl.betacraft.logblock.Data;
 
 public class PL extends PlayerListener {
+
+	@Override
+	public void onPlayerChat(PlayerChatEvent e) {
+		final Iterator<Player> it = e.getRecipients().iterator();
+		while (it.hasNext()) {
+			final Player p = it.next();
+			if (PDB.ignored(p.getName()).contains(e.getPlayer().getName())) {
+				it.remove();
+			}
+		}
+	}
 
 	@Override
 	public void onPlayerJoin(PlayerJoinEvent e) {
@@ -21,13 +34,13 @@ public class PL extends PlayerListener {
 	@Override
 	public void onPlayerQuit(PlayerQuitEvent e) {
 		PDB.seen(e.getPlayer().getName(), Data.current());
-		if (Moressentials.inventories.get(e.getPlayer().getName()) != null) {
+/*		if (Moressentials.inventories.get(e.getPlayer().getName()) != null) {
 			PlayerInventory pi = Moressentials.inventories.get(e.getPlayer().getName());
 			e.getPlayer().getInventory().clear();
 			e.getPlayer().getInventory().setContents(pi.getContents());
 			e.getPlayer().getInventory().setArmorContents(pi.getArmorContents());
 			Moressentials.inventories.remove(e.getPlayer().getName());
-		}
+		}*/
 	}
 
 	@Override

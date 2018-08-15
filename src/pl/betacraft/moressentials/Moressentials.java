@@ -1,8 +1,6 @@
 package pl.betacraft.moressentials;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -12,13 +10,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
-import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.nijikokun.bukkit.Permissions.Permissions;
 
 public class Moressentials {
-	public static Map<String, PlayerInventory> inventories = new HashMap<String, PlayerInventory>();
+	//public static Map<String, CraftInventoryPlayer> inventories = new HashMap<String, CraftInventoryPlayer>();
 
 	public static void onEnable(JavaPlugin instance) {
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_QUIT, new PL(), Priority.Normal, instance);
@@ -30,7 +27,7 @@ public class Moressentials {
 	}
 
 	public static void onDisable() {
-		for (Player p: Bukkit.getServer().getOnlinePlayers()) {
+/*		for (Player p: Bukkit.getServer().getOnlinePlayers()) {
 			if (Moressentials.inventories.get(p.getName()) != null) {
 				PlayerInventory pi = Moressentials.inventories.get(p.getName());
 				p.getInventory().clear();
@@ -38,7 +35,7 @@ public class Moressentials {
 				p.getInventory().setArmorContents(pi.getArmorContents());
 				Moressentials.inventories.remove(p.getName());
 			}
-		}
+		}*/
 	}
 
 	// betacraft.mssentials.nick.self
@@ -150,8 +147,14 @@ public class Moressentials {
 				return true;
 			}
 			if (args.length == 0) {
-				if (Moressentials.inventories.get(p.getName()) != null) {
-					PlayerInventory pi = Moressentials.inventories.get(p.getName());
+				if (PDB.readInventory(p)) {
+					p.sendMessage(ChatColor.GRAY + "Przywrócono twój ekwipunek.");
+				}
+				else {
+					p.sendMessage("/invsee <gracz>");
+				}
+/*				if (Moressentials.inventories.get(p.getName()) != null) {
+					final CraftInventoryPlayer pi = Moressentials.inventories.get(p.getName());
 					p.getInventory().clear();
 					p.getInventory().setContents(pi.getContents());
 					p.getInventory().setArmorContents(pi.getArmorContents());
@@ -160,20 +163,27 @@ public class Moressentials {
 				}
 				else {
 					p.sendMessage("/invsee <gracz>");
-				}
+				}*/
 				return true;
 			}
 			Player target = Bukkit.getServer().getPlayer(args[0]);
 			if (target == null) {
 				return true;
 			}
-			inventories.put(p.getName(), p.getInventory());
+			//final CraftInventoryPlayer c = (CraftInventoryPlayer) p.getInventory();
+			//inventories.put(p.getName(), c);
+			PDB.writeInventory(p);
 			p.getInventory().setContents(target.getInventory().getContents());
 			p.getInventory().setArmorContents(target.getInventory().getArmorContents());
 			p.sendMessage(ChatColor.GRAY + "Widzisz ekwipunek gracza " + args[0] + ".");
 		}
 		if (cmd.getName().equalsIgnoreCase("commandspy")) {
 			if (!Permissions.Security.has(p, "betacraft.mssentials.commandspy")) {
+				return true;
+			}
+			if (PDB.commandspy(p.getName())) {
+				PDB.commandspy(p.getName(), false);
+				p.sendMessage(ChatColor.GRAY + "Od teraz nie bedziesz juz widziec komend graczy.");
 				return true;
 			}
 			PDB.commandspy(p.getName(), true);
@@ -186,7 +196,7 @@ public class Moressentials {
 				return true;
 			}
 			String name = args[0];
-			String display = args[1];
+			String display = "";
 			if (args.length == 1) {
 				if (!Permissions.Security.has(p, "betacraft.mssentials.nick.self")) {
 					return true;
@@ -201,6 +211,7 @@ public class Moressentials {
 			if (!Permissions.Security.has(p, "betacraft.mssentials.nick.others")) {
 				return true;
 			}
+			display = args[1];
 			PDB.nick(name, display);
 			Player tar = Bukkit.getServer().getPlayer(name);
 			if (tar != null) {
