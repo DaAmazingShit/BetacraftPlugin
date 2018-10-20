@@ -25,14 +25,15 @@ public class LogBlock {
 	public static Configuration conf = new Configuration(log);
 
 	public static boolean consoleoutput = true;
+	protected static boolean loggingEnabled = true;
 
 	public void onDisable() {}
 
 	public static void onEnable(JavaPlugin instance) {
+		conf.load();
 		if (!log.exists()) {
 			try {
 				System.out.println(" [LogBlock] LogBlock: Tworzenie pliku Logu...");
-				conf.load();
 				conf.setProperty("LogBlock", "tak");
 				conf.save();
 				System.out.println(" [LogBlock] LogBlock: Stworzono log.");
@@ -40,6 +41,11 @@ public class LogBlock {
 				System.out.println(" [BetaCraft] LogBlock: Niepowodzenie!");
 				e1.printStackTrace();
 			}
+		}
+
+		if (conf.getString("LogBlock", null).equals("nie")) {
+			loggingEnabled = false;
+			return;
 		}
 
 		LBBlock b = new LBBlock();
@@ -126,5 +132,9 @@ public class LogBlock {
 			}
 		}
 		return true;
+	}
+
+	public static boolean isLoggingEnabled() {
+		return LogBlock.loggingEnabled;
 	}
 }

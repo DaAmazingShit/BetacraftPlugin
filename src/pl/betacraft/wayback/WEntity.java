@@ -16,8 +16,8 @@ public class WEntity extends EntityListener {
 		if (!(e.getEntity() instanceof Sheep)) {
 			return;
 		}
-		// If the cause of damaging the sheep is not an attack, contact or an projectile, leave this event alone
-		if (e.getCause() != DamageCause.ENTITY_ATTACK && e.getCause() != DamageCause.CONTACT && e.getCause() != DamageCause.PROJECTILE) {
+		// If the cause of damaging the sheep is not an attack or contact then leave this event alone
+		if (e.getCause() != DamageCause.ENTITY_ATTACK && e.getCause() != DamageCause.CONTACT) {
 			return;
 		}
 		Sheep sheep = (Sheep)e.getEntity();

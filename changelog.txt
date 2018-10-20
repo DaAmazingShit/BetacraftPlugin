@@ -1,3 +1,6 @@
+v1.4.2:
+- Mainly bugfixes
+- Updated to new server version (modded b1.7.3)
 v1.4.1-patch3:
 - Fixed /nick
 - Fixed ignoring players

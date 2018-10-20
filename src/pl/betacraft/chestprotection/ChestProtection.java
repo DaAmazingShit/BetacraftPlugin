@@ -30,6 +30,10 @@ public class ChestProtection {
 
 	public static void onEnable(JavaPlugin instanc) {
 		server = (CraftServer)instanc.getServer();
+		// Disable for BetaCraft
+		if (server.getIp().equals("betacraft.ovh")) {
+			return;
+		}
 		lang   = new LanguageManager();
 		instance = instanc;
 		if (!ConfigManager.configExists()) {
@@ -58,6 +62,11 @@ public class ChestProtection {
 	}
 
 	public static boolean onCommand(CommandSender sender, Command cmd, String cmdalias, String[] args) {
+		// Disable for BetaCraft
+		if (server.getIp().equals("betacraft.ovh")) {
+			return true;
+		}
+
 		for (Commands c: CommandManager.getCommands()) {
 			c.execute(sender, cmd, cmdalias, args);
 		}
