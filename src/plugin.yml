@@ -1,11 +1,11 @@
 name: BetaCraft
 main: pl.betacraft.moresteck.Betacraft
-version: 1.4.3
+version: 1.5.0
 authors: [Moresteck, Kazu]
 description: Zestaw autorskich pluginow na serwer BetaCraft 1.7.3
 website: https://betacraft.ovh
 depend: [Permissions]
-softdepend: [MultiVerse]
+softdepend: [Multiverse-Core]
 
 commands:
     dzialka:
@@ -71,3 +71,10 @@ commands:
     commandspy:
         aliases: [bccommandspy]
         usage: /commandspy
+    say:
+        aliases: [bcsay]
+        usage: /say
+    conlogin:
+        usage: /conlogin
+    conlogout:
+        usage: /conlogout

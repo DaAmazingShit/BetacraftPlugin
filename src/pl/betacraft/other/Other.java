@@ -14,7 +14,7 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.nijikokun.bukkit.Permissions.Permissions;
+import pl.betacraft.moresteck.Betacraft;
 
 // Small things go here
 public class Other {
@@ -22,7 +22,7 @@ public class Other {
 
 	public static void onEnable(JavaPlugin instance) {
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new ZOO(), Priority.Normal, instance);
-		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new OtherPlayer(), Priority.Normal,
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_CHAT, new OtherPlayer(), Priority.Lowest,
 				instance);
 		Bukkit.getServer().getPluginManager().registerEvent(Type.PLAYER_JOIN, new OtherPlayer(), Priority.Normal,
 				instance);
@@ -50,7 +50,7 @@ public class Other {
 					Player pl = (Player)sender;
 					if (ZOO.canSee(pl.getName())) {
 						ZOO.denySee(pl.getName());
-						sender.sendMessage(" §a[§eZoO§c!§a]: §eWylaczyles podglad.");
+						sender.sendMessage(" §a[§eZoO§c!§a]: §cWylaczyles podglad.");
 						return true;
 					}
 					ZOO.allowSee(pl.getName());
@@ -62,7 +62,7 @@ public class Other {
 			}
 			if (args[0].equalsIgnoreCase("wsadz")) {
 				if (sender instanceof Player) {
-					if (!Permissions.Security.has((Player)sender, "betacraft.zoo")) {
+					if (!Betacraft.permissions.getHandler().has((Player)sender, "betacraft.zoo")) {
 						sender.sendMessage("§cZoO! twierdzi, ze nie mozesz tego zrobic :(");
 						return true;
 					}
@@ -86,7 +86,7 @@ public class Other {
 			}
 			if (args[0].equalsIgnoreCase("wysadz")) {
 				if (sender instanceof Player) {
-					if (!Permissions.Security.has((Player)sender, "betacraft.zoo")) {
+					if (!Betacraft.permissions.getHandler().has((Player)sender, "betacraft.zoo")) {
 						sender.sendMessage("§cZoO! twierdzi, ze nie mozesz tego zrobic :(");
 						return true;
 					}
@@ -123,7 +123,7 @@ public class Other {
 				return true;
 			}
 			Player p = (Player)sender;
-			if (!Permissions.Security.has(p, "betacraft.admin")) {
+			if (!Betacraft.permissions.getHandler().has(p, "betacraft.admin")) {
 				return true;
 			}
 			for (World w : Bukkit.getServer().getWorlds()) {
@@ -135,12 +135,12 @@ public class Other {
 		if (cmd.getName().equalsIgnoreCase("adminchat")) {
 			if (sender instanceof Player) {
 				Player p = (Player)sender;
-				if (!Permissions.Security.has(p, "betacraft.admin")) {
+				if (!Betacraft.permissions.getHandler().has(p, "betacraft.admin")) {
 					return true;
 				}
 				if (adminchat.contains(p.getName())) {
 					adminchat.remove(p.getName());
-					p.sendMessage(ChatColor.RED + "Opusciles adminchatu");
+					p.sendMessage(ChatColor.RED + "Opusciles adminchat");
 					return true;
 				}
 				adminchat.add(p.getName());
@@ -148,7 +148,11 @@ public class Other {
 				return true;
 			}
 			// Console messages
-			sendAdminmsg("<CONSOLE> " + args.toString());
+			String message = "";
+			for (int i = 0; i < args.length; i++) {
+				message = message + args[i];
+			}
+			sendAdminmsg("<CONSOLE> " + message);
 			return true;
 		}
 		if (cmd.getName().equalsIgnoreCase("clearitems")) {
@@ -182,11 +186,11 @@ public class Other {
 	public static void sendAdminmsg(String msg) {
 		Player[] online = Bukkit.getServer().getOnlinePlayers();
 		for (Player p: online) {
-			if (Permissions.Security.has(p, "betacraft.adminchat")) {
+			if (Betacraft.permissions.getHandler().has(p, "betacraft.adminchat")) {
 				p.sendMessage(msg);
 			}
 		}
 		// Console
-		System.out.println(msg);
+		System.out.println("AdminChat: " + msg);
 	}
 }

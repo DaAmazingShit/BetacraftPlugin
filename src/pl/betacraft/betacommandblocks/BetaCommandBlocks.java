@@ -18,6 +18,8 @@ import org.bukkit.util.config.Configuration;
 
 import com.nijikokun.bukkit.Permissions.Permissions;
 
+import pl.betacraft.moresteck.Betacraft;
+
 public class BetaCommandBlocks {
 
 	public static Configuration config;
@@ -36,7 +38,7 @@ public class BetaCommandBlocks {
 		if (cmd.getName().equalsIgnoreCase("setblock")) {
 			if (sender instanceof Player) {
 				Player p = (Player)sender;
-				if (!Permissions.Security.has(p, "betacraft.commandblocks.use")) {
+				if (!Betacraft.permissions.getHandler().has(p, "betacraft.commandblocks.use")) {
 					sender.sendMessage(ChatColor.RED + "Brak dostepu");
 					return true;
 				}

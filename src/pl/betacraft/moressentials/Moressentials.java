@@ -12,7 +12,7 @@ import org.bukkit.event.Event.Priority;
 import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.nijikokun.bukkit.Permissions.Permissions;
+import pl.betacraft.moresteck.Betacraft;
 
 public class Moressentials {
 	//public static Map<String, CraftInventoryPlayer> inventories = new HashMap<String, CraftInventoryPlayer>();
@@ -133,7 +133,7 @@ public class Moressentials {
 				return true;
 			}
 			else {
-				if (!Permissions.Security.has(p, "betacraft.mssentials.ci")) {
+				if (!Betacraft.permissions.getHandler().has(p, "betacraft.mssentials.ci")) {
 					return true;
 				}
 				Player target = Bukkit.getServer().getPlayer(args[0]);
@@ -143,7 +143,7 @@ public class Moressentials {
 			}
 		}
 		if (cmd.getName().equalsIgnoreCase("invsee")) {
-			if (!Permissions.Security.has(p, "betacraft.mssentials.invsee")) {
+			if (!Betacraft.permissions.getHandler().has(p, "betacraft.mssentials.invsee")) {
 				return true;
 			}
 			if (args.length == 0) {
@@ -178,7 +178,7 @@ public class Moressentials {
 			p.sendMessage(ChatColor.GRAY + "Widzisz ekwipunek gracza " + args[0] + ".");
 		}
 		if (cmd.getName().equalsIgnoreCase("commandspy")) {
-			if (!Permissions.Security.has(p, "betacraft.mssentials.commandspy")) {
+			if (!Betacraft.permissions.getHandler().has(p, "betacraft.mssentials.commandspy")) {
 				return true;
 			}
 			if (PDB.commandspy(p.getName())) {
@@ -198,7 +198,7 @@ public class Moressentials {
 			String name = args[0];
 			String display = "";
 			if (args.length == 1) {
-				if (!Permissions.Security.has(p, "betacraft.mssentials.nick.self")) {
+				if (!Betacraft.permissions.getHandler().has(p, "betacraft.mssentials.nick.self")) {
 					return true;
 				}
 				name = p.getName();
@@ -208,7 +208,7 @@ public class Moressentials {
 				p.sendMessage(ChatColor.GRAY + "Ustawiono twój nick na: " + display + ".");
 				return true;
 			}
-			if (!Permissions.Security.has(p, "betacraft.mssentials.nick.others")) {
+			if (!Betacraft.permissions.getHandler().has(p, "betacraft.mssentials.nick.others")) {
 				return true;
 			}
 			display = args[1];

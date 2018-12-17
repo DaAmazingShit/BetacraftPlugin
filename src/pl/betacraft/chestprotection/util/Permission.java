@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import org.bukkit.entity.Player;
 
-import com.nijikokun.bukkit.Permissions.Permissions;
+import pl.betacraft.moresteck.Betacraft;
 
 public class Permission {
 
@@ -12,7 +12,7 @@ public class Permission {
 		if (permission.isDefault()) {
 			return true;
 		}
-		return Permissions.Security.has(p, permission.getName());
+		return Betacraft.permissions.getHandler().has(p, permission.getName());
 	}
 
 	public enum Perm {

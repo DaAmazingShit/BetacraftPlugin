@@ -21,10 +21,10 @@ public class DM {
 		return db.getProperty("bazary." + p) != null;
 	}
 
-	public static Location getLocation(String p, String dzialkabazar) {
+	public static Location getLocation(String p, String dzielnia) {
 		db.load();
 		Location ret = null;
-		String node = db.getString(dzialkabazar + "." + p, null);
+		String node = db.getString(dzielnia + "." + p, null);
 		String[] coords = node.split(",");
 		double x = Double.parseDouble(coords[0]);
 		double y = Double.parseDouble(coords[1]);
@@ -33,20 +33,20 @@ public class DM {
 		return ret;
 	}
 
-	public static boolean setLocation(Player p, String who, String dzialkabazar) {
+	public static boolean setLocation(Player p, String who, String dzielnia) {
 		db.load();
 		String location = null;
 		location = p.getLocation().getBlockX() + "," + 
 				p.getLocation().getBlockY() + "," + 
 				p.getLocation().getBlockZ();
-		db.setProperty(dzialkabazar + "." + who, location);
+		db.setProperty(dzielnia + "." + who, location);
 		db.save();
 		return true;
 	}
 
-	public static boolean delete(String p, String dzialkabazar) {
+	public static boolean delete(String p, String dzielnia) {
 		db.load();
-		db.removeProperty(dzialkabazar + "." + p);
+		db.removeProperty(dzielnia + "." + p);
 		db.save();
 		return true;
 	}

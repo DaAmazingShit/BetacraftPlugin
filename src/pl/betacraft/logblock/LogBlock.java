@@ -17,7 +17,7 @@ import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.util.config.Configuration;
 
-import com.nijikokun.bukkit.Permissions.Permissions;
+import pl.betacraft.moresteck.Betacraft;
 
 public class LogBlock {
 
@@ -100,7 +100,7 @@ public class LogBlock {
 				return true;
 			}
 			Player p = (Player)s;
-			if (!Permissions.Security.has(p, "betacraft.logblock.rollback")) {
+			if (!Betacraft.permissions.getHandler().has(p, "betacraft.logblock.rollback")) {
 				p.sendMessage(ChatColor.RED + "Brak pozwolenia.");
 				return true;
 			}

@@ -12,7 +12,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerListener;
 
-import com.nijikokun.bukkit.Permissions.Permissions;
+import pl.betacraft.moresteck.Betacraft;
 
 public class LBPlayer extends PlayerListener {
 	public static Map<String, Block> clicked = new HashMap<String, Block>();
@@ -23,7 +23,7 @@ public class LBPlayer extends PlayerListener {
 			return;
 		}
 		String p = e.getPlayer().getName();
-		if (e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getPlayer().getItemInHand().getType() == Material.LEATHER && Permissions.Security.has(e.getPlayer(), "logblock.check")) {
+		if (e.getAction() == Action.RIGHT_CLICK_BLOCK && e.getPlayer().getItemInHand().getType() == Material.LEATHER && Betacraft.permissions.getHandler().has(e.getPlayer(), "logblock.check")) {
 			if (clicked.get(p) != null) {
 				clicked.remove(p);
 			}

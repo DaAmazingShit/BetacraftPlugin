@@ -13,7 +13,13 @@ import org.bukkit.craftbukkit.entity.CraftEntity;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Pig;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event.Priority;
+import org.bukkit.event.Event.Type;
+import org.bukkit.event.server.PluginEnableEvent;
+import org.bukkit.event.server.ServerListener;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import com.nijikokun.bukkit.Permissions.Permissions;
 
 import pl.betacraft.betacommandblocks.BetaCommandBlocks;
 import pl.betacraft.chestprotection.ChestProtection;
@@ -22,9 +28,9 @@ import pl.betacraft.logblock.LogBlock;
 import pl.betacraft.moblimit.MobLimit;
 import pl.betacraft.moressentials.Moressentials;
 import pl.betacraft.other.Other;
-import pl.betacraft.wayback.Wayback;
 
 public class Betacraft extends JavaPlugin {
+	public static Permissions permissions;
 	/*
 	 * Permissions:
 	 * 
@@ -66,9 +72,18 @@ public class Betacraft extends JavaPlugin {
 	 */
 
 	public void onEnable() {
+		Bukkit.getServer().getPluginManager().registerEvent(Type.PLUGIN_ENABLE, new ServerListener() {
+			@Override
+			public void onPluginEnable(PluginEnableEvent e) {
+				if (!e.getPlugin().getDescription().getFullName().equals("Permissions") && !e.getPlugin().getDescription().getVersion().equals("2.7.7")) {
+					return;
+				}
+				Betacraft.permissions = (Permissions) e.getPlugin();
+				Bukkit.getServer().getLogger().info(" [BetaCraft] Znaleziono SuperpermsBridge v1.2");
+			}
+		}, Priority.Normal, this);
 		LogBlock.onEnable(this);
 		Dzialecznik.onEnable();
-		Wayback.onEnable(this);
 		MobLimit.onEnable(this);
 		BetaCommandBlocks.onEnable(this);
 		ChestProtection.onEnable(this);
