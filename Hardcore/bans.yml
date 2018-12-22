@@ -1,0 +1,5 @@
+ban-time-minutes: 120
+worlds:
+- hardcore
+- hardcore_nether
+banned-players: []

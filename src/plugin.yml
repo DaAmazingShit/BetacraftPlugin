@@ -78,3 +78,7 @@ commands:
         usage: /conlogin
     conlogout:
         usage: /conlogout
+    cobblex:
+        usage: /cobblex
+    itemy:
+        usage: /itemy

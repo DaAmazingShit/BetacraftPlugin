@@ -24,6 +24,8 @@ import com.nijikokun.bukkit.Permissions.Permissions;
 import pl.betacraft.betacommandblocks.BetaCommandBlocks;
 import pl.betacraft.chestprotection.ChestProtection;
 import pl.betacraft.dzialecznik.Dzialecznik;
+import pl.betacraft.hardcore.Hdb;
+import pl.betacraft.hardcore.SpongeBlock;
 import pl.betacraft.logblock.LogBlock;
 import pl.betacraft.moblimit.MobLimit;
 import pl.betacraft.moressentials.Moressentials;
@@ -92,6 +94,21 @@ public class Betacraft extends JavaPlugin {
 		Bukkit.getServer().getLogger().info(" [BetaCraft] Wlaczono, wersja: " + this.getDescription().getVersion());
 		Bukkit.getServer().getScheduler().scheduleAsyncRepeatingTask(this, new Runnable() {
 			public void run() {
+				if (!Hdb.getAllSponges().isEmpty()) {
+					for (SpongeBlock sb: Hdb.getAllSponges()) {
+						boolean matches = false;
+						for (String world: Hdb.getHardcoreWorlds()) {
+							if (!matches) {
+								if (sb.getSpongeBlock().getWorld().getName().equals(world)) {
+									matches = true;
+								}
+							}
+						}
+						if (matches) {
+							sb.generateStone();
+						}
+					}
+				}
 				BetaCommandBlocks.config.load();
 				if (BetaCommandBlocks.config.getKeys("commandblocks") != null) {
 					if (BetaCommandBlocks.config.getKeys("commandblocks") == null || BetaCommandBlocks.config.getKeys("commandblocks").isEmpty()) {
