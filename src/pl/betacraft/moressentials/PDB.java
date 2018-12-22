@@ -15,10 +15,10 @@ import org.bukkit.material.MaterialData;
 import org.bukkit.util.config.Configuration;
 
 public class PDB {
-	private static Configuration db = new Configuration(new File("BetaCraft/Mssentials/data", ""));
+	private static Configuration db = new Configuration(new File("BetaCraft/MEssentials/data", ""));
 
 	public static String seen(String player) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", player + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", player + ".dat"));
 		db.load();
 		if (db.getProperty("seen") == null) {
 			return "o nieznanej porze";
@@ -27,27 +27,27 @@ public class PDB {
 	}
 
 	public static void seen(String player, String date) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", player + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", player + ".dat"));
 		db.load();
 		db.setProperty("seen", date);
 		db.save();
 	}
 
 	public static boolean god(String player) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", player + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", player + ".dat"));
 		db.load();
 		return db.getBoolean("god", false);
 	}
 
 	public static void god(String player, boolean on) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", player + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", player + ".dat"));
 		db.load();
 		db.setProperty("god", on);
 		db.save();
 	}
 
 	public static Location back(Player p) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p.getName() + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p.getName() + ".dat"));
 		db.load();
 		if (db.getProperty("back") == null) {
 			return null;
@@ -72,7 +72,7 @@ public class PDB {
 	}
 
 	public static void ignore(Player p, String who, boolean on) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p.getName() + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p.getName() + ".dat"));
 		db.load();
 		List<String> ignored = new LinkedList<String>();
 		ignored.addAll(db.getStringList("ignore", new LinkedList<String>()));
@@ -87,7 +87,7 @@ public class PDB {
 	}
 
 	public static List<String> ignored(String p) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p + ".dat"));
 		db.load();
 		List<String> ignored = new LinkedList<String>();
 		ignored.addAll(db.getStringList("ignore", new LinkedList<String>()));
@@ -95,40 +95,40 @@ public class PDB {
 	}
 
 	public static void back(Player p, Location loc) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p.getName() + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p.getName() + ".dat"));
 		db.load();
 		db.setProperty("back", loc(loc));
 		db.save();
 	}
 
 	public static void nick(String p, String nick) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p + ".dat"));
 		db.load();
 		db.setProperty("nick", nick);
 		db.save();
 	}
 
 	public static String nick(String p) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p + ".dat"));
 		db.load();
 		return db.getString("nick", p);
 	}
 
 	public static boolean commandspy(String p) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p + ".dat"));
 		db.load();
 		return db.getBoolean("spy", false);
 	}
 
 	public static void commandspy(String p, boolean on) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", p + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", p + ".dat"));
 		db.load();
 		db.setProperty("spy", on);
 		db.save();
 	}
 
 	public static void writeInventory(Player player) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", player.getName() + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", player.getName() + ".dat"));
 		db.load();
 		PlayerInventory pi = player.getInventory();
 		StringBuilder inventory = new StringBuilder();
@@ -168,7 +168,7 @@ public class PDB {
 	}
 
 	public static boolean readInventory(Player player) {
-		db = new Configuration(new File("BetaCraft/Mssentials/data", player.getName() + ".dat"));
+		db = new Configuration(new File("BetaCraft/MEssentials/data", player.getName() + ".dat"));
 		db.load();
 		String inv = db.getString("inventory", null);
 		if (inv == null) {
